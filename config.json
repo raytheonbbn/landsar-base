@@ -1,0 +1,276 @@
+{
+   "name":"FINDER DMZ Deployment",
+   "description":"",
+   "pluginDirectories":[
+      "plugins"
+   ],
+   "orchestratorQueuePlugin":"com.bbn.roger.plugin.example.ArrayBlockingQueuePlugin",
+   "ifpConfigurationFile":"ifp.xml",
+   "dependencyDirectory":"dependencies",
+   "loadPluginsFromClasspath":false,
+   "pluginClassLoading":"ONE_CLASS_LOADER_PER_PLUGIN_DIRECTORY",
+   "serviceConfigurations":[
+      {
+         "serviceType":"NetworkCommunication",
+         "pluginConfigurations":[
+            {
+               "name":"JettyServerPlugin_user_pass",
+               "className":"com.bbn.roger.plugin.core.io.server.JettyServerPlugin",
+               "deploymentModel":"InProcess",
+               "servlets":[
+                  "RestoreWebServerPlugin-1",
+                  "WebMapUI"
+               ],
+               "use_tls":true,
+               "keystore_path":"./landsar-base.jks",
+               "keystore_password":"landsarMotionModels",
+               "port":8000,
+               "use_auth":true,
+               "auth_config_path":"file:./shiro.ini",
+               "http_redirects":[
+                  "/favicon.ico::/webmap/landsar/landsar.html",
+                  "::/webmap/landsar/landsar.html"
+               ]
+            },
+            {
+               "name":"ServerPlugin_no_auth",
+               "className":"com.bbn.roger.plugin.core.io.server.JettyServerPlugin",
+               "deploymentModel":"InProcess",
+               "servlets":[
+                  "WebsocketServerPlugin-1"
+               ],
+               "port":8082,
+               "use_tls":false,
+               "use_auth":false
+            }
+         ]
+      },
+      {
+         "serviceType":"BaseService",
+         "defaultMessageDisposal":"My Message Disposal",
+         "pluginConfigurations":[
+            {
+               "name":"My Message Disposal",
+               "className":"com.bbn.roger.plugin.core.MessageDisposalCounterPlugin",
+               "deploymentModel":"InProcess"
+            },
+            {
+               "name":"UnzipCompletionNotifierPlugin",
+               "className":"com.bbn.roger.osppre.plugin.UnzipCompletionNotifierPlugin"
+            },
+            {
+               "name":"routeToSender",
+               "className":"com.bbn.roger.plugin.core.routing.ReturnToSenderRoutingPlugin",
+               "deploymentModel":"InProcess"
+            },
+            {
+               "name":"RemoveAllDestsRoutingPlugin",
+               "className":"com.bbn.roger.plugin.core.routing.RemoveAllDestsRoutingPlugin"
+            },
+            {
+               "name":"KMLPlugin",
+               "className":"com.bbn.roger.osppre.plugin.KmlPlugin",
+               "deploymentModel":"InProcess",
+               "search storage plugin name":"StoreScenariosAndSearchesPlugin",
+               "include elevation":true,
+               "include landcover":true
+            },
+            {
+               "name":"SearchCreatorPlugin",
+               "className":"com.bbn.roger.osppre.plugin.SearchCreatorPlugin",
+               "deploymentModel":"InProcess",
+               "search storage plugin name":"StoreScenariosAndSearchesPlugin"
+            },
+            {
+               "name":"LPIDeleterPlugin",
+               "className":"com.bbn.roger.osppre.plugin.LostPersonInstanceDeleter",
+               "deploymentModel":"InProcess",
+               "search storage plugin name":"StoreScenariosAndSearchesPlugin"
+            },
+            {
+               "name":"SearchRemoverPlugin",
+               "className":"com.bbn.roger.osppre.plugin.SearchRemoverPlugin",
+               "deploymentModel":"InProcess",
+               "search storage plugin name":"StoreScenariosAndSearchesPlugin"
+            },
+            {
+               "name":"ViewLPIsPlugin",
+               "className":"com.bbn.roger.osppre.plugin.LostPersonMetadataSender",
+               "deploymentModel":"InProcess",
+               "search storage plugin name":"StoreScenariosAndSearchesPlugin"
+            },
+            {
+               "name":"OsppreConfigSender",
+               "className":"com.bbn.roger.osppre.plugin.OsppreConfigSender",
+               "deploymentModel":"InProcess",
+               "search storage plugin name":"StoreScenariosAndSearchesPlugin"
+            },
+            {
+               "name":"MultipartMessageConverterPlugin",
+               "className":"com.bbn.roger.plugin.core.qos.MultiPartMessageConverterPlugin",
+               "deploymentModel":"InProcess"
+            },
+            {
+               "name":"ByteArrayToStringPayload",
+               "className":"com.bbn.roger.plugin.core.payloadTransformation.ByteArrayToStringPayloadPlugin",
+               "deploymentModel":"InProcess"
+            },
+            {
+               "name":"StringToBytes",
+               "className":"com.bbn.roger.plugin.core.payloadTransformation.StringToByteArrayPayloadPlugin",
+               "deploymentModel":"InProcess"
+            },
+            {
+               "name":"HTTPVersionAdder",
+               "className":"com.bbn.roger.plugin.core.MetadataAdderPlugin",
+               "deploymentModel":"InProcess",
+               "key":"http_version",
+               "value":"HTTP/1.1"
+            },
+            {
+               "name":"addFilename",
+               "className":"com.bbn.roger.plugin.core.MetadataAdderPlugin",
+               "deploymentModel":"InProcess",
+               "key":"fileName",
+               "value":"allKMZs.zip"
+            },
+            {
+               "name":"HTTPStatusOkAdder",
+               "className":"com.bbn.roger.plugin.core.MetadataAdderPluginInteger",
+               "deploymentModel":"InProcess",
+               "key":"status code",
+               "value":201
+            },
+            {
+               "name":"MultiPartCreator",
+               "className":"com.bbn.roger.plugin.core.qos.MultiPartMessageCreatorPlugin"
+            },
+            {
+               "name":"queueAggregateMP",
+               "className":"com.bbn.roger.plugin.core.pipeline.QueueAggregatePlugin",
+               "combiner plugin name":"mpCombiner"
+            },
+            {
+               "name":"writeToFile",
+               "className":"com.bbn.roger.plugin.core.pipeline.WriteToFilePlugin"
+            },
+            {
+               "name":"UnzipPlugin",
+               "className":"com.bbn.roger.plugin.core.qos.UnzipPlugin",
+               "keep zip":false
+            },
+            {
+               "name":"UnzipToDisk",
+               "className":"com.bbn.roger.osppre.plugin.UnzipToDiskPlugin",
+               "keep zip":true,
+               "unzipDestDir":"web/missionPackages",
+               "subdirMetadataKeys":[
+                  "lpiuuid",
+                  "fileName"
+               ]
+            },
+            {
+               "name":"StoreAfterActionReportPlugin",
+               "className":"com.bbn.roger.osppre.plugin.StoreAfterActionReportPlugin",
+               "deploymentModel":"InProcess",
+               "load directory":"afterActionReports",
+               "storage directory":"afterActionReports"
+            },
+            {
+		"name": "MotionModelCoordinatorPlugin",
+		"className": "com.bbn.roger.osppre.plugin.motion_model_arch.LandSARMotionModelManagerPlugin",
+		"deploymentModel": "InProcess",
+		"motion model plugin names": "ExampleMotionModelPluginWithSearchEval",
+		"search storage plugin name": "StoreScenariosAndSearchesPlugin",
+		"geodata mode": "disk",
+		"geo cache directory": "geo_cache",
+        	"elevation layer": "dted:dted",
+		"landcover params": "defaultParams/landcover-defaults.txt",
+                "default lpp params": "defaultParams/default-lpp-params.txt",
+		"default wandering params":"defaultParams/default-wandering-params.txt",
+		"default goal params":"defaultParams/default-goal-oriented-params.txt",
+                "default search params":"defaultParams/default-search-params.txt"
+	     }
+         ]
+      },
+      {
+         "serviceType":"UtilityService",
+         "pluginConfigurations":[
+            {
+               "name":"StoreScenariosAndSearchesPlugin",
+               "className":"com.bbn.roger.osppre.plugin.StoreScenariosAndSearchesPlugin",
+               "deploymentModel":"InProcess",
+               "clear on shutdown":false,
+               "load directory":"scenariosAndSearches",
+               "storage directory":"scenariosAndSearches"
+            }
+	,	
+	{
+		"name": "WebMapUI",
+		"className": "com.bbn.roger.osppre.plugin.WebMapUIPlugin",
+		"deploymentModel": "InProcess",
+		"missionPackageDir": "missionPackages",
+		"motion model coordinator plugin": "MotionModelCoordinatorPlugin"
+	},
+{
+		"name": "RestoreWebServerPlugin-1",
+		"className": "com.bbn.roger.osppre.plugin.web.RestoreWebServerPlugin",
+		"deploymentModel": "InProcess",
+		"id": 1,
+		"missionPackageDir": "missionPackages",
+		"search storage plugin name": "StoreScenariosAndSearchesPlugin",
+		"aar storage plugin name": "StoreAfterActionReportPlugin",
+		"motion model coordinator plugin": "MotionModelCoordinatorPlugin"
+	},
+            {
+               "name":"WebMapUI",
+               "className":"com.bbn.roger.osppre.plugin.WebMapUIPlugin",
+               "deploymentModel":"InProcess",
+               "missionPackageDir":"missionPackages",
+               "search storage plugin name":"StoreScenariosAndSearchesPlugin",
+               "motion model coordinator plugin":"MotionModelCoordinatorPlugin"
+            },        
+            {
+               "name":"mpCombiner",
+               "className":"com.bbn.roger.plugin.atak.MissionPackageCombiner",
+               "include content uid":false,
+               "mission package name base":"FINDER-KMZs-",
+               "call sign":"FINDER"
+            },
+            {
+               "name":"DerbyDBPlugin",
+               "className":"com.bbn.roger.osppre.plugin.db.DerbyDBPlugin",
+               "host":"127.0.0.1",
+               "port":1621
+            },
+	     {
+		"name": "ExampleMotionModelPluginWithSearchEval",
+		"className": "com.bbn.landsar.motionmodel.example.ExampleMotionModelPluginWithSearchEval"
+	     }
+
+         ]
+      },
+      {
+         "serviceType":"UIService",
+         "port":9095,
+         "pluginConfigurations":[
+            {
+               "name":"ReportingUI",
+               "className":"com.bbn.roger.plugin.example.CommonStoreViewerPlugin",
+               "deploymentModel":"InProcess"
+            },
+            {
+               "name":"LPIDeleterUI",
+               "className":"com.bbn.roger.osppre.plugin.FinderFileManagerPlugin",
+               "search storage plugin name":"StoreScenariosAndSearchesPlugin"
+            }
+         ]
+      },
+      {
+         "serviceType":"BackgroundService",
+         "pluginConfigurations":[
+
+         ]
+      }
+   ]
+}

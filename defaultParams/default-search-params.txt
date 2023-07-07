@@ -1,0 +1,22 @@
+Crew Status Factor - Fresh: 1.0
+Crew Status Factor - Fatigued: 1.0
+Search Sensor Factor - Visual: 1.0
+Search Sensor Factor - Night Vision: 1.0
+Search Sensor Factor - FLIR: 1.0
+Search Season Factor - Spring: 1.0
+Search Season Factor - Summer: 1.0
+Search Season Factor - Fall: 1.0
+Search Season Factor - Winter: 1.0
+Search RWA Elevation Factor - Under 500: 1.0
+Search RWA Elevation Factor - To 1000: 1.0
+Search RWA Elevation Factor - Over 1000: 1.0
+Base Sweep Width FLIR: 2000
+Base Sweep Width Night Vision Helicopter: 1000
+Base Sweep Width Night Vision Foot: 200
+Base Sweep Width Visual Helicopter: 1500
+Base Sweep Width Visual Foot: 300
+Base Sweep Width Default: 100
+Foot Time on Station Hrs: 2.0
+Foot Speed (kph): 3.0
+Helicopter Time on Station Hrs: 1.0
+Helicopter Speed (kph): 60.0

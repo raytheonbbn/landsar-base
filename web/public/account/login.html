@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <link rel="stylesheet" href="../leaflet/leaflet.css" />
+    <link rel="stylesheet" href="../loader/css-loader.css" />
+    <script src="login.js"></script>
+    <script src="../util/cookie.js"></script>
+
+    <!-- browser and mobile icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../icons/favicon-16x16.png">
+    <link rel="manifest" href="../icons/site.webmanifest">
+    <link rel="mask-icon" href="../icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="../icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="../icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+
+    <!--any js script goes here <script src="js/scripts.js"></script>-->
+    <script>
+        /**
+         * If web browser is IE, illicit a warning
+         *
+         * https://stackoverflow.com/questions/19999388/check-if-user-is-using-ie
+         */
+        if (window.document.documentMode && getCookie("ieBrowserWarningShown") === null) {
+            alert("An incompatible browser was detected. The following browsers are supported: Chrome, Firefox, and Edge.");
+            setCookie("ieBrowserWarningShown", true, 0);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let usernameDiv = document.getElementById("username");
+            usernameDiv.addEventListener('input', function(){
+                    setCookie("username", usernameDiv.value, 0)
+                },
+                true);
+
+            // we used to check sessionStorage.length > 0, but it is often zero after restarting the server
+            if(checkShouldAutoLogin() === true) {
+                location.replace("/webmap/landsar/landsar.html");
+                // set the cookie to false in case logging in fails
+                setCookie("loggedIn", false, 0)
+            }
+
+        });
+    </script>
+
+    <!--any js script goes here <script src="js/scripts.js"></script>-->
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+
+    <title>LandSAR - Login</title>
+    <meta name="description" content="LandSAR">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- placeholder for external style sheet - but  will be embedded for now <link rel="stylesheet" href="css/styles.css?v=1.0">-->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Lato", sans-serif;
+        }
+
+        /* start background image */
+        .image {
+            min-height: 100vh;
+            background-image: url("landsar-compass.png");
+            background-color: #ffffff;
+            /* background-size: cover; */
+            background-size: 600px;
+            background-position: right top;
+            background-repeat: no-repeat;
+            padding: 40px;
+        }
+
+        /*end background image */
+
+        /* header nav style */
+
+        /* Style the header with some padding */
+        .header {
+            overflow: hidden;
+            background-color:transparent;
+            padding: 20px 10px;
+        }
+
+        /* Style the header links */
+        .header a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+
+        /* Only for text: Style the logo link  */
+        .header a.logo {
+            font-size: 25px;
+            font-weight: normal;
+        }
+
+        /* Only for text: Change the background color on mouse-over */
+        .header a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Only for text: Style the active/current link*/
+        .header a.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        /* Float the link section to the right */
+        .header-right {
+            float: right;
+        }
+
+        /* removes partner logos when screen is smaller */
+
+        @media screen and (max-width: 600px) {
+
+            img.header-images {
+                display: none;
+            }
+
+        }
+
+
+        /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other
+        @media screen and (max-width: 800px) {
+          .header a {
+            float: none;
+            display: block;
+            text-align: left;
+          }
+          .header-right {
+            float: none;
+          }
+        } */
+
+        /* end header nav style */
+
+        /* main content block */
+
+        .content {
+            /* background: #fff;
+             opacity: 0.7;
+             */
+            padding: 30px;
+            padding-bottom: 100px;
+            border-radius: 20px;
+            border: 1px solid #f1f1f1;
+        }
+
+        /* end main content block */
+
+
+        /* start side by side columns */
+
+        .column1 {
+            /* float: left;
+            while we don't have anything in column 2, center column1 */
+            float: center;
+            width: 50%;
+            padding-right: 40px;
+
+        }
+
+        .column2 {
+            background: #fff;
+            /*opacity: 0.5;*/
+
+            float: left;
+            width: 60%;
+            padding-left: 40px;
+            padding-right: 40px;
+
+        }
+
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+
+        }
+
+        /* end side by side columns*/
+
+        /* start responsive images */
+        .responsive {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* end responsive images */
+
+
+        /* start Bordered form */
+        form {
+            border: 3px solid #f1f1f1;
+        }
+
+        /* Full-width inputs */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Center the avatar image inside this container */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+        /* Avatar image */
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        /* Add a hover effect for buttons */
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Extra style for the cancel button (red) */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        /* Center the avatar image inside this container */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+        }
+
+        /* The "Forgot password" text */
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        #login_container{
+            padding: 0 !important;
+        }
+
+        #login_content{
+            padding-top: 0 !important;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+        /* end Bordered form */
+
+        /* responsive */
+
+        @media screen and (max-width: 800px) {
+            .column1 {
+                width: 100%;
+            }
+        }
+
+        @media screen and (min-width: 1400px) {
+            img.avatar {
+                width: 30%;
+            }
+        }
+
+        @media screen and (min-width: 2200px) {
+            img.avatar {
+                width: 20%;
+            }
+        }
+
+        /* @media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+    */
+        /* end responsive */
+
+
+    </style>
+</head>
+
+<body><!-- header nav-->
+<div class="header">
+    <a href="#default" class="logo"><img src="LandSAR_logo_nobox.png" alt="LandSAR Logo" class="responsive"></a>
+    <!-- waiting to put the logos in
+    <div class="header-right"> -->
+    <!-- if you want text <a class="active" href="#home">Home</a>-->
+    <!-- <a href="#"><img src="_img/150x70.png" alt="Logo 1" class="header-images responsive"></a>-->
+    <!-- if you want text  <a href="#contact">Contact</a>-->
+    <!-- <a href="#"><img src="_img/150x70.png" alt="Logo 2" class="header-images responsive"></a>-->
+    <!-- if you want text <a href="#about">About</a>-->
+    <!-- <a href="#"><img src="_img/150x70.png" alt="Logo 3" class="header-images responsive"></a>
+         -->
+</div>
+<!-- end header nav-->
+<div class="image">
+
+<!-- end header nav-->
+<div id="login_container">
+    <div id="login_content" class="content">
+        <div class="row">
+            <div class="column1">
+
+                <form id="loginForm" action="" method="post">
+                    <div class="imgcontainer">
+                        <img src="user_icon.png" alt="Avatar" class="avatar">
+                    </div>
+                    <div class="container">
+                        <label for="username"><b>Username</b></label>
+                        <input id="username" type="text" placeholder="Enter Username" name="username" required>
+
+                        <label for="password"><b>Password</b></label>
+                        <input id="password" type="password" placeholder="Enter Password" name="password" required>
+
+                        <button type="submit">Login</button>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
+                    </div>
+
+                    <div class="container" style="background-color:#f1f1f1">
+                        <button type="button" class="cancelbtn">Cancel</button>
+                        <span class="psw">Forgot <a
+                                href="/webmap/landsar/public/account/forgotPassword.html">password?</a></span>
+                    </div>
+                </form>
+            </div>
+
+            <!--  <div class="column2">
+        <h1>What is Lorem Ipsum?</h1>
+                  <div><img src="_img/400x300.png" alt="Rescue" class="responsive"></div>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+            -->
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

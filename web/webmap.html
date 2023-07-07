@@ -1,0 +1,235 @@
+<html>
+	<head>
+		<title>FINDER WebMap UI</title>
+		<link rel="stylesheet" href="public/leaflet/leaflet.css" />
+		<link rel="stylesheet" href="public/loader/css-loader.css" />
+		<script src='jquery-3.3.1.min.js'></script>
+		<script src="public/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="public/jquery-ui-1.12.1.custom/jquery-ui.theme.css" />
+		<link rel="stylesheet" href="public/jquery-ui-1.12.1.custom/jquery-ui.min.css" />
+		
+		<style>
+			.alignleft {
+				float: left;
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+			.alignright {
+				float: right;
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+		</style>
+		
+		<script src="public/leaflet/leaflet.js"></script>
+		<script>
+			var overlays = {};
+			var curSelected = null;
+			var slider;
+			var mymap;
+			var baseLayer;
+			
+			function overlaySelectChanged(overlaysSelect) {
+				if(curSelected != null) {
+					overlays[curSelected][0].removeFrom(mymap);	
+					overlays[curSelected][1].removeFrom(mymap);
+				}
+			
+				overlays[overlaysSelect.value][0].addTo(mymap);	
+				overlays[overlaysSelect.value][1].addTo(mymap);
+				
+				curSelected = overlaysSelect.value;
+				
+				slider.slider( "value", overlaysSelect.selectedIndex + 1 );
+			}
+			
+			function retrieveMP() {
+				$.ajax("/webmap/servlet/?action=getOverlay&mpid=" + document.getElementById("mpid").value).done(function( msg ) {
+				    var overlaysSelect = document.getElementById("overlays");
+				    var unsortedOverlayDates = [];
+				    for(var i = 0; i < msg.length; i++) {
+				    	var overlay = msg[i];
+					    imageBounds = [[overlay.boundingBox.north, overlay.boundingBox.east], [overlay.boundingBox.south, overlay.boundingBox.west]];
+						//L.rotateImageLayer(overlay.imageURL, imageBounds, {rotation: 0}).addTo(mymap);
+						
+						var o = overlays[msg[i].name];
+						if(o == null || o == undefined) {
+							o = [];
+							overlays[msg[i].name] = o;
+						}
+						o.push(L.rotateImageLayer(overlay.imageURL, imageBounds, {rotation: 0}));
+						
+						unsortedOverlayDates.push(msg[i].name);
+						
+						if(i == msg.length - 1) {
+							mymap.setView([overlay.boundingBox.north, overlay.boundingBox.east], 10);
+						}
+					}
+					
+					unsortedOverlayDates.sort(function(a, b) {
+					    a = new Date(a);
+					    b = new Date(b);
+					    return a>b ? -1 : a<b ? 1 : 0;
+					});
+					
+					$('#overlays').children().remove();
+					
+					for(var j = 0; j < unsortedOverlayDates.length; j++) {
+						var option = document.createElement("option");
+					    option.text = unsortedOverlayDates[j];
+					    overlaysSelect.add(option, overlaysSelect[0]);
+					}
+					// ** set the first option as the selected one
+					overlaysSelect[0].selected =true;;
+					
+					$( function() {
+			    var select = $( "#overlays" );
+			    var max = $('#overlays option').length;
+			    slider = $('#slider').slider({
+			      min: 1,
+			      max: max,
+			      range: "min",
+			      value: select[ 0 ].selectedIndex + 1,
+			      slide: function( event, ui ) {
+			        select[ 0 ].selectedIndex = ui.value - 1;
+			        overlaySelectChanged(overlaysSelect);
+			      }
+			    });
+			    $('#slider')[0].style.zIndex = 100000;
+			  } );
+					
+				  });
+			}
+			
+			function changeMapType() {
+				
+				var mapType = $('#mapType').val();
+				baseLayer.removeFrom(mymap);
+				switch(mapType) {
+					case "mapbox.streets":
+						baseLayer._url = "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}";
+						baseLayer.options.accessToken = 'sk.eyJ1IjoibnNvdWxlIiwiYSI6ImNqb2RjZXJqOTBxeHozcWxlZ3JsY3dwejIifQ.RST-F_VcgkUcACdX1GFt9Q';
+						baseLayer.options.id = "mapbox.streets";
+						baseLayer.options.maxZoom = 18;
+						baseLayer.options.attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+						break;
+					case "mapbox.satellite":
+						baseLayer._url = "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}";
+						baseLayer.options.accessToken = 'sk.eyJ1IjoibnNvdWxlIiwiYSI6ImNqb2RjZXJqOTBxeHozcWxlZ3JsY3dwejIifQ.RST-F_VcgkUcACdX1GFt9Q';
+						baseLayer.options.id = "mapbox.satellite";
+						baseLayer.options.maxZoom = 18;
+						baseLayer.options.attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+						break;
+					case "opentopomap":
+						baseLayer._url = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
+						baseLayer.options.maxZoom = 17;
+						baseLayer.options.attribution = 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)';
+						break;
+					case "thunderforest.roads":
+						baseLayer._url = 'https://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}';
+						baseLayer.options.maxZoom = 20;
+						baseLayer.options.attribution = 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+						break;
+					case "esri.delorme":
+						baseLayer._url = 'https://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}';
+						baseLayer.options.attribution = 'Tiles &copy; Esri &mdash; Copyright: &copy;2012 DeLorme';
+						baseLayer.options.minZoom = 1;
+						baseLayer.options.maxZoom = 11;
+						break;
+					case "esri.worldImagery":
+						baseLayer._url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+						baseLayer.options.attribution = 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+						break;
+					case "osm":
+					default:
+						baseLayer._url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+						baseLayer.options.attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+						baseLayer.options.maxZoom = 19;
+						break;
+				}
+				
+				baseLayer.addTo(mymap);
+			}
+		</script>
+	</head>
+	<body>
+		<img src="public/img/WebOSPPRE-1.png"/>
+		<br/>
+		<div style="width: 100%; height: 40px; background-color: #eee; border-left: 6px solid #3d7e9a;">
+		<p class="alignleft">
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span style="font-weight: bold;">Select a search:</span>
+			<select id="mpid" name="mpid" class="ui-selectmenu-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget"></select>
+			<input type="button" id="loadBtn" name="loadBtn" value="Load" onClick="retrieveMP();" class="ui-button ui-widget ui-corner-all"/>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span style="font-weight: bold;">Jump to specific date/time:</span>
+			<select id="overlays" name="overlays" class="ui-selectmenu-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget"><option>Select a search</option></select>
+		</p>
+		
+		<p class="alignright">
+			<span style="font-weight: bold;">Base map type:</span>
+			<select id="mapType" onchange="changeMapType()" class="ui-selectmenu-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget"><option value="mapbox.streets">MapBox Streets</option><option value="mapbox.satellite">MapBox Satellite</option><option value="osm" selected>OpenStreetMaps</option><option value="opentopomap">OpenTopoMap</option><option value="thunderforest.roads">Thunderforest Roads</option><option value="esri.delorme">ESRI DeLorme</option><option value="esri.worldImagery">ESRI World Imagery</option></select>
+		</p>
+		</div>
+		<div style="clear: both;"></div>
+		<div id="mapid" style="height: 480px;"></div>
+
+		<script>
+			// ** setup on-change handler for the select box of overlays
+			var overlaysSelect = document.getElementById("overlays");
+			overlaysSelect.onchange = function() {
+				overlaySelectChanged(overlaysSelect);
+			}
+			
+			mymap = L.map('mapid').setView([36.7856, -108.687], 13);
+			baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			});
+			
+			baseLayer.addTo(mymap);
+			
+			L.rotateImageLayer = function(url, bounds, options) {
+			    return new L.RotateImageLayer(url, bounds, options);
+			};
+			// A quick extension to allow image layer rotation.
+			L.RotateImageLayer = L.ImageOverlay.extend({
+			    options: {rotation: 0},
+			    _animateZoom: function(e){
+			        L.ImageOverlay.prototype._animateZoom.call(this, e);
+			        var img = this._image;
+			        img.style[L.DomUtil.TRANSFORM] += ' rotate(' + this.options.rotation + 'deg)';
+			    },
+			    _reset: function(){
+			        L.ImageOverlay.prototype._reset.call(this);
+			        var img = this._image;
+			        img.style[L.DomUtil.TRANSFORM] += ' rotate(' + this.options.rotation + 'deg)';
+			    }
+			});
+			
+			$.ajax("/webmap/servlet/?action=listOverlays").done(function(msg) {
+				var jsonMsg = JSON.parse(msg);
+				var mpSelect = document.getElementById("mpid");
+				
+				for(var i = 0; i < jsonMsg.length; i++) {
+					var option = document.createElement("option");
+				    option.text = jsonMsg[i];
+				    mpSelect.add(option, mpSelect[0]);
+				}
+				
+			});
+			
+			$.ajax("/webmap/servlet/?action=getOverlay&mpid=" + document.getElementById("mpid").value).done(function( msg ) {
+			    for(var i = 0; i < msg.length; i++) {
+			    	var overlay = msg[i];
+				    imageBounds = [[overlay.boundingBox.north, overlay.boundingBox.east], [overlay.boundingBox.south, overlay.boundingBox.west]];
+					L.rotateImageLayer(overlay.imageURL, imageBounds, {rotation: 0}).addTo(mymap);
+				}
+			  });
+			
+		</script>
+		</script>
+		
+		<div class="loader loader-double" id="loader"></div>
+		<div id='slider'></div>
+	</body>
+</html>

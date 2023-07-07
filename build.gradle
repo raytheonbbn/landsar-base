@@ -1,0 +1,150 @@
+plugins {
+    id "com.github.spotbugs" version "5.0.4"
+}
+
+group 'com.bbn.roger'
+version restore_version
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+//sourceCompatibility = 11
+
+
+repositories {
+    maven { url 'https://repo.osgeo.org/repository/release/' }
+    maven { url 'https://repo.osgeo.org/repository/snapshot/' }
+    mavenCentral()
+    //mavenLocal()
+    maven {
+        url "https://maven.geo-solutions.it"
+    }
+    maven {
+    	url 'provided_lib'
+    }
+    //flatDir {
+    //    dirs 'provided_lib'
+    //}
+}
+
+dependencies {
+    def withoutSLF4JSimple = { exclude group: 'org.slf4j', module: 'slf4j-simple' }
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12', withoutSLF4JSimple
+    testImplementation group: 'org.reflections', name: 'reflections', version: '0.9.11'
+    testImplementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
+    testImplementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.0'
+
+    compileOnly 'org.springframework:spring-context:4.3.10.RELEASE'
+    compileOnly 'org.springframework:spring-web:4.3.10.RELEASE'
+    compileOnly group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
+    compileOnly group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.0'
+    compileOnly 'javax.validation:validation-api:1.1.0.Final'
+    compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
+//    compileOnly 'javax.websocket:javax.websocket-api:1.1'
+
+
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7', withoutSLF4JSimple
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.1.7', withoutSLF4JSimple
+    compileOnly 'it.geosolutions:geoserver-manager:1.7.0'
+
+    implementation 'org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813'
+    implementation 'org.eclipse.jetty.websocket:websocket-servlet:9.4.20.v20190813'
+    implementation 'io.netty:netty-all:4.1.6.Final'
+    implementation group: 'org.gdal', name: 'gdal', version: '2.4.0'
+    implementation group: 'de.micromata.jak', name: 'JavaAPIforKml', version: '2.2.1'
+    implementation group: 'com.bbn.androidAwtAdapters', name: 'factory', version: '0.0.1'
+    implementation group: 'org.jgrapht', name: 'jgrapht-core', version: jgrapht_version
+    implementation group: 'com.metsci.glimpse', name: 'glimpse-util', version: glimpse_version
+    implementation group: 'com.bbn.roger', name: 'roger-plugin-interfaces', version: roger_version, changing: true
+    implementation group: 'com.metsci.jpra', name: 'osppre-core', version: restore_version, changing:true
+    //implementation project(':osppre-core')
+
+    implementation group: 'org.apache.derby', name: 'derby', version: '10.14.2.0'
+    implementation group: 'org.apache.derby', name: 'derbynet', version: '10.14.2.0'
+    implementation group: 'org.apache.derby', name: 'derbyclient', version: '10.14.2.0'
+
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.22.Final'
+
+    // to more easily log java.util.Random
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'joda-time:joda-time:2.3'
+
+    implementation group: "com.bbn.landsar", name: "motion-model-sdk", version: motion_model_sdk_version, changing: true
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation group: 'org.json', name: 'json', version: '20210307'
+
+    implementation files('../local_lib/worldwind-release.jar')
+
+    // https://mvnrepository.com/artifact/commons-codec/commons-codec
+    implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    
+    // for river plugin
+    implementation 'com.google.code.gson:gson:2.9.1'
+    implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+    
+    // Jetty Server Plugin (from roger-core-plugins) dependencies
+    implementation group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.20.v20190813'
+    implementation group: 'org.eclipse.jetty', name: 'jetty-rewrite', version: '9.4.20.v20190813'
+    // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util
+    implementation group: 'org.eclipse.jetty', name: 'jetty-util', version: '9.4.20.v20190813'
+    // ** web security framework Apache Shiro
+    implementation group: 'org.apache.shiro', name: 'shiro-core', version: '1.4.1'
+    implementation group: 'org.apache.shiro', name: 'shiro-web', version: '1.4.1'
+    // The dependencies below were added to support web sockets
+    implementation 'org.eclipse.jetty.websocket:websocket-server:9.4.20.v20190813'
+    implementation 'org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813'
+    // ** For JAX-RS support in JettyServerPlugin
+    // https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server
+    implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.30.1'
+    implementation group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version: '2.30.1'
+    implementation group: 'org.glassfish.jersey.containers', name: 'jersey-container-jetty-http', version: '2.30.1'
+
+}
+
+
+//copy all the dependencies needed at runtime to the dependencies dir.
+task copyRuntimeLibs(type: Copy) {
+    into 'dependencies'
+    from configurations.runtimeClasspath
+}
+
+
+spotbugs {
+    ignoreFailures = true
+}
+
+test {
+    //1G used to be the default before gradle5, gradle5 reduced it
+    maxHeapSize = "1g"
+    environment "LD_LIBRARY_PATH", 'src/main/resources/gdal'
+    environment "DYLD_LIBRARY_PATH", 'src/main/resources/gdal'
+
+    systemProperty "http.proxyHost", System.getProperty("http.proxyHost")
+    systemProperty "http.proxyPort", System.getProperty("http.proxyPort")
+    systemProperty "https.proxyHost", System.getProperty("https.proxyHost")
+    systemProperty "https.proxyPort", System.getProperty("https.proxyPort")
+}
+
+publishing {
+
+    repositories {
+        mavenLocal()
+    }
+
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+

@@ -1,0 +1,60 @@
+<h4>Layer Settings</h4>
+
+<table>
+	<tr>
+		<td>Visible Layer: </td>
+		<td>
+			<form>
+				<select id="visibleLayerSelect" onchange="updateLayerChange()">
+					<option value="default">Default</option>
+					<option value="elevation">Elevation</option>
+					<option value="landcover">Landcover</option>
+				</select>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>Sample Paths</td><td><input type="checkbox" id="samplePathsLayerCB" name="samplePathsLayerCB" checked="checked" onClick="updateLayerChange();"></input></td>
+	</tr>
+	<tr>
+		<td>Distributions</td>
+		<td>
+			<input type="checkbox" id="distributionLayerCB" name="distributionLayerCB" checked="checked" onClick="updateLayerChange();"></input>
+			&nbsp; Opacity:
+			<input type="number" min="0" max="100" name="distributionOpacity" id="distributionOpacity" size="3" value="100" onChange="updateLayerChange();"></input>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>USNG/MGRS Grid</td><td><label for="usngGridOverlayCB"></label><input type="checkbox" id="usngGridOverlayCB" name="usngGridOverlayCB" onClick="updateLayerChange();"/></td>
+	</tr>
+
+	<tr>
+		<td>Coordinate System</td>
+		<td>
+			<select name="coordinateSystem" id="coordinateSystem" onClick="updateLayerChange();">
+			</select>
+			<!-- selector is populated in forms.js-->
+		</td>
+	</tr>
+
+	<tr>
+		<td>Unit Measurement</td>
+		<td>
+			<select name="unitMeasurementSystem" id="unitMeasurementSystem" onClick="updateLayerChange();">
+			</select>
+			<!-- selector is populated in forms.js-->
+		</td>
+	</tr>
+
+	<tr>
+		<td><button style="margin-top: 10px;" onclick="resetLayerSettingsToDefault()">Reset Layers</button></td>
+	</tr>
+
+	<!-- This will only display when creating an LPI, and will become invisible if lpi is cancelled or if lpi is successfully created-->
+	<tr>
+		<td><button style="display: none;" id='lpiDeleteButton' type="button" onclick="promptDeleteCurrentlyDrawingLPI()">Clear last drawn LPI</button></td>
+	</tr>
+</table>
+<br/>
+<input type='button' value='Close' onclick='closeLayerSettings()'>

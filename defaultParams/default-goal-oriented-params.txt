@@ -1,0 +1,5 @@
+Maximum turn angle (deg): 1.0
+Minimum turn angle (deg): 1.0
+Maximum leg length (m): 1.0
+Awareness radius (m): 1.0
+Move radius (m): 1.0

@@ -1,0 +1,87 @@
+<!-- A form containing information from the lost person -->
+<span><b>Instructions:</b></span>
+<p><i>Please enter information about the recovered person.
+</i></p>
+
+<div class="headerText">Hours subject mobile</div><br>
+<i>From the time last seen to the time the recovered person
+    stopped moving altogether. If the subject slept during the night and then resumed movement
+    upon awakening, the sleep time should be included.</i><br>
+<input type="number" id="hoursSubjectMobile" name="hoursSubjectMobile"><br>
+
+<div class='headerText'>Behavior while Lost</div><br>
+<i>Was the lost person running or walking? Heading toward/away from anything?
+	Did they think they knew where they were?
+</i><br>
+<table>
+		<tr>
+			<input type="checkbox" id="behavior_running" name="behavior_while_lost" value='RUNNING'>
+			<label style="margin-left: 5px" for="behavior_running">Running</label><br>
+		</tr>
+		<tr>
+			<input type="checkbox" id="behavior_walking" name="behavior_while_lost" value='WALKING'>
+			<label style="margin-left: 5px" for="behavior_walking">Walking</label><br>
+		</tr>
+		<tr>
+			<input type="checkbox" id="behavior_approaching" name="behavior_while_lost" value='APPROACHING'>
+			<label style="margin-left: 5px" for="behavior_approaching">Approaching</label><br>
+		</tr>
+		<tr>
+			<input type="checkbox" id="behavior_evading" name="behavior_while_lost" value='EVADING'>
+			<label style="margin-left: 5px" for="behavior_evading">Evading</label><br>
+		</tr>
+		<tr>
+			<input type="checkbox" id="behavior_shelter" name="behavior_while_lost" value='TAKING_SHELTER'>
+			<label style="margin-left: 5px" for="behavior_shelter">Taking Shelter</label><br>
+		</tr>
+		<tr>
+			<label for="behavior_other">Other</label><br>
+			<textarea id="behavior_other" name="behavior_while_lost_other" rows="2" cols="50"></textarea><br>
+		</tr>
+</table>
+
+<div class="headerText">Military/Hiking Training</div><br>
+<i>How frequently does the lost person go hiking? Is this their first time?</i><br>
+<textarea id="militaryHikingTraining" name="militaryHikingTraining" rows="5" cols="50"></textarea><br>
+
+
+
+
+
+
+<div class="headerText">Emotional State</div><br>
+<i>What was the lost person's emotional state while isolated?</i><br>
+<table>
+	<tr>
+		<input type="checkbox" id="emotional_calm" name="emotional_state" value='CALM'>
+		<label style="margin-left: 5px" for="emotional_calm">Calm</label><br>
+	</tr>
+	<tr>
+		<input type="checkbox" id="emotional_panicked" name="emotional_state" value='PANICKED'>
+		<label style="margin-left: 5px" for="emotional_panicked">Panicked</label><br>
+	</tr>
+	<tr>
+		<input type="checkbox" id="emotional_somewhat_together" name="emotional_state" value='HOLDING_TOGETHER_SOMEWHAT'>
+		<label style="margin-left: 5px" for="emotional_somewhat_together">Somewhat Holding Together</label><br>
+	</tr>
+	<tr>
+		<label for="emotional_other">Other</label><br>
+		<textarea id="emotional_other" name="emotional_state_other" rows="2" cols="50"></textarea><br>
+	</tr>
+</table>
+
+
+<i>In relation to the 'last seen' time used by the SAR team, when did the lost person actually become
+    lost/isolated? Enter the delta in hours and minutes.</i>
+<table>
+	<tr>
+		<td>
+            <label for="hoursDelta"><b>Hours: </b></label>
+            <input type="number" id="hoursDelta" name="hoursDelta">
+		</td>
+		<td>
+			<label for="minutesDelta"><b>Minutes: </b></label>
+			<input type="number" id="minutesDelta" name="minutesDelta">
+		</td>
+	</tr>
+</table>

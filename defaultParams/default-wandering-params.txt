@@ -1,0 +1,4 @@
+Distance increment (m): 1
+Number of segments: 1
+Number options (paths) considered: 1
+Course change stdev (deg): 1

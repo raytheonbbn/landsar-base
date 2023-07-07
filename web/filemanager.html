@@ -1,0 +1,289 @@
+<meta charset="utf-8"/>
+<html>
+	<head>
+		<title>FINDER Filemanager UI</title>
+		<link rel="stylesheet" href="public/leaflet/leaflet.css" />
+		<link rel="stylesheet" href="public/loader/css-loader.css" />
+		<script src='jquery-3.3.1.min.js'></script>
+		<script src="public/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="public/jquery-ui-1.12.1.custom/jquery-ui.theme.css" />
+		<link rel="stylesheet" href="public/jquery-ui-1.12.1.custom/jquery-ui.min.css" />
+		
+		<style>
+			.modal {
+				display: none; /* Hidden by default */
+				position: fixed; /* Stay in place */
+				z-index: 1; /* Sit on top */
+				padding-top: 100px; /* Location of the box */
+				left: 0;
+				top: 0;
+				width: 100%; /* Full width */
+				height: 100%; /* Full height */
+				overflow: auto; /* Enable scroll if needed */
+				background-color: rgb(0,0,0); /* Fallback color */
+				background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			}
+			
+			/* Modal Content */
+			.modal-content {
+				position: relative;
+				background-color: #fefefe;
+				margin: auto;
+				padding: 0;
+				border: 1px solid #888;
+				width: 30%;
+				box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+			}
+			.close {
+				color: white;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+			  
+			.close:hover,
+			.close:focus {
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			
+			table, th, tr, td {
+				border: 1px solid black;
+			}
+			
+			th, tr, td {
+				padding: 5px 5px;
+			}
+			
+			.modal-header {
+				padding: 1px 16px;
+				background-color: #FBB73B;
+				color: white;
+			}
+			  
+			.modal-body {padding: 15px 16px;}
+			
+			.modal-footer {
+				padding: 10px 16px;
+				background-color: #FBB73B;
+				color: white;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<img src="public/img/WebOSPPRE-1.png"/>
+		<br/>
+		
+		<a href="javascript:checkAll()">Select All</a>
+		<a href="javascript:getSelected()">Delete Selected</a>
+		
+		<table>
+			<tr>
+				<th>Select</th>
+				<th>Name</th>
+				<th>ID</th>
+				<th>Action</th>
+				<th>Content</th>
+			</tr>
+		</table>
+		
+		<div id="pageModal" class="modal">
+			<!-- Modal content -->
+			<div id="modalContent" class="modal-content">
+				<div class="modal-header">
+					<span id="close" class="close">&times;</span>
+					<h2 id="header">Delete resource?</h2>
+				</div>
+				<div class="modal-body">
+					<p id="modalText" align="center"></p>
+				</div>
+				<div id="footer" class="modal-footer">
+					<input type='button' value='Delete' id="permDelete">
+					<input onclick="closeModal()" type='button' value='Close'>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			
+			var modal = document.getElementById("pageModal");
+			var close = document.getElementById("close");
+			var modalText = document.getElementById("modalText");
+			var modalHeader = document.getElementById("header");
+			var modalFooter = document.getElementById("footer");
+			var doDeleteBtn = document.getElementById("permDelete");
+			var modalHeaderClass = document.getElementsByClassName("modal-header")[0];
+			var modalContent = document.getElementById("modalContent");
+				
+			// When the user clicks on <span> (x), close the modal
+			close.onclick = function() {
+				modal.style.display = "none";
+			};
+			
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			};
+			
+			function closeModal() { modal.style.display = "none"; }
+			
+			function checkAll() {
+				var cbs = document.getElementsByTagName('input');
+				for(var i=0; i < cbs.length; i++) {
+					if(cbs[i].type == 'checkbox') {
+						switch (cbs[i].checked) {
+							case true:
+								cbs[i].checked = false;
+								break;
+							case false:
+								cbs[i].checked = true;
+								break;
+						}
+					}
+				}
+			}
+			
+			var list = [];
+			
+			function getSelected() {
+				var cbs = document.getElementsByTagName('input');
+				var selected = [];
+				for(var i=0; i < cbs.length; i++){
+					if(cbs[i].type == 'checkbox'){
+						if(cbs[i].checked) {
+							selected.push(cbs[i].parentElement.parentElement.id);
+						}
+					}
+				}
+				openDelete(selected);
+			}
+			
+			
+			function openDelete(items) {
+				modalHeader.innerHTML = "Delete resource?"
+				modalHeaderClass.style.backgroundColor = "#FBB73B";
+				modalFooter.style.backgroundColor = "#FBB73B";
+				modalContent.style.width = "30%";
+				doDeleteBtn.style.display = "inline";
+				modal.style.display = "block";
+				list = items;
+				doDeleteBtn.onclick = function() {
+					if (list.length == 1) {
+						stringArray += ",";
+					}
+					var stringArray = list.join();
+					$.ajax({
+						type: "POST",
+						url: "/admin/filemanager/servlet/?action=deleteLPIs",
+						data: { lpis: stringArray },
+						success: function() {
+							modal.style.display = "none";
+							window.location.reload();
+						}
+					});
+				};
+				if(items.length == "0"){
+					modalText.innerHTML = "Please select a Lost Person Instance to be deleted.";
+					document.getElementById('permDelete').disabled = true;
+				}
+				else if (items.length == "1"){
+					modalText.innerHTML = "Do you want to delete 1 file?  This cannot be undone! *NOTE: All area data will also be deleted.";
+					document.getElementById('permDelete').disabled = false;
+				}
+				else {
+					modalText.innerHTML = "Do you want to delete " + items.length + " files?  This cannot be undone! *NOTE: All area data will also be deleted.";
+					document.getElementById('permDelete').disabled = false;
+				}
+			}
+			
+			function doDelete(array) {
+				var stringArray = array.join();
+				$.ajax({
+					type: "POST",
+					url: "/admin/filemanager/servlet/?action=deleteLPIs",
+					dataType: "String",
+					data: stringArray,
+					success: function() {
+						alert("You succesfully deleted the files from the server.");
+					}
+				});
+			}
+			
+			function moreDetails(number) {
+				modalHeader.innerHTML = "Details"
+				modalContent.style.width = "70%";
+				modalHeaderClass.style.backgroundColor = "#46e07c";
+				modalFooter.style.backgroundColor = "#46e07c";
+				doDeleteBtn.style.display = "none";
+				modal.style.display = "block";
+				var stringifiedJSON = JSON.stringify(window.lpis[number]);
+				modalText.innerHTML = stringifiedJSON;
+				modalText.style.wordWrap = "break-word";
+			}
+			
+			$.ajax("/admin/filemanager/servlet/?action=getAllLPIs").done(function(msg){
+				window.lpis = msg.lostPersonInstances;
+				var numLpis = window.lpis.length;
+				var table = document.querySelector("table");
+				
+				if (numLpis == 0) {
+					var row = document.createElement("tr");
+					table.appendChild(row);
+					var emptyElement = document.createElement("td");
+					var emptyText = document.createTextNode("There are currenty no Lost Person Instances on the server.");
+					emptyElement.appendChild(emptyText);
+					emptyElement.setAttribute("colspan", "5");
+					row.appendChild(emptyElement);
+				} else {
+					for (var i = 0; i < numLpis; i++) {
+						var row = document.createElement("tr");
+						row.setAttribute("id", window.lpis[i].id);
+						row.setAttribute("class", i);
+						table.appendChild(row);
+						
+						var select = document.createElement("td");
+						var selectBtn = document.createElement("input");
+						selectBtn.setAttribute("type", "checkbox");
+						selectBtn.setAttribute("id", window.lpis[i].id + "Select");
+						select.setAttribute("align", "center")
+						select.appendChild(selectBtn);
+						row.appendChild(select);
+						
+						var nameElement = document.createElement("td");
+						var nameText = document.createTextNode(window.lpis[i].name);
+						nameElement.appendChild(nameText);
+						row.appendChild(nameElement);
+						
+						var idElement = document.createElement("td");
+						var idText = document.createTextNode(window.lpis[i].id);
+						idElement.appendChild(idText);
+						row.appendChild(idElement);
+						
+						var deleteElement = document.createElement("td");
+						var deleteBtn = document.createElement("input");
+						deleteBtn.setAttribute("type", "button");
+						deleteBtn.setAttribute("value", "delete");
+						deleteBtn.setAttribute("onclick", "openDelete([this.parentElement.parentElement.id])");
+						deleteElement.appendChild(deleteBtn);
+						row.appendChild(deleteElement);
+						
+						var contentElement = document.createElement("td");
+						var moreBtn = document.createElement("input");
+						moreBtn.setAttribute("type", "button");
+						moreBtn.setAttribute("value", "more");
+						moreBtn.setAttribute("onclick", "moreDetails(this.parentElement.parentElement.className)");
+						contentElement.appendChild(moreBtn);
+						row.appendChild(contentElement);
+					}
+				}
+				
+				
+			});
+		</script>
+		
+	</body>
+</html>

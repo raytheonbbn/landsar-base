@@ -12,6 +12,8 @@
 # Background and Setup
 This document assumes you have the associated LandSAR Motion Model Software Development Kit (SDK), an implementation of a Motion Model Plugin, and want to test it out within the LandSAR system.
 
+Please install Git LFS prior to cloning this repo: https://git-lfs.com/
+
 ## System Information
 LandSAR Base excludes operational models and parameters found in the LandSAR system. 
 

@@ -3,7 +3,6 @@
   <a href="#">
     <img src="images/LandSAR_logo_nobox.png" alt="Logo" >
   </a>
-
   <h1 align="center">LandSAR Base</h1>
   <h2 align="center">Test Harness for Motion Model Plugins</h2>
 </p>

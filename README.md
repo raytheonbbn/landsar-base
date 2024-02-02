@@ -86,6 +86,9 @@ after adding plugin A: `"motion model plugin names": "Simple Maritime Plugin,Exa
 Finally, make sure the jar containing your plugin is in the plugins/ folder. The example plugins are in the `roger-osppre-2.0.3.jar` and in the motion model sdk jar. 
 
 # Running LandSAR Base
+First install dependencies via running:
+./set-up-LandSAR-BASE.sh
+
 ## Running on Linux
 If you have a linux OS, you can run LandSAR Base by: 
 1) installing gdal (https://gdal.org/) and Java 8

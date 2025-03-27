@@ -21,3 +21,7 @@ gradle-app.setting
 .classpath
 
 logs/**
+
+dependencies/**
+osppre-dependencies/dependencies/**
+roger-core-dependencies/dependencies/**

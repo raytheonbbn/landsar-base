@@ -9,4 +9,5 @@ export LD_LIBRARY_PATH="./nativelibs"
 
 # java -agentlib:jdwp=transport=dt_socket=8998,server=y,suspend=y -Dlogback.configurationFile=logback.xml -cp roger-core-*.jar com.bbn.roger.launcher.CommandLineLauncher --configFile config.json
 
-java -Dlogback.configurationFile=logback.xml -cp roger-core-*.jar com.bbn.roger.launcher.CommandLineLauncher --configFile config.json
+java -cp "roger-core-dependencies/dependencies/*:roger-core-1.4.0-fullRelease.jar" com.bbn.roger.launcher.CommandLineLauncher --configFile config.json
+

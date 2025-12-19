@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Folder>
+<name>Distribution without searches</name>
+<GroundOverlay>
+  <visibility>0</visibility>
+  <drawOrder>0</drawOrder>
+  <name>2025-03-27T21:39:59-04:00</name>
+  <Icon>
+    <href>SearchScenario/MotionOnly.png</href>
+  </Icon>
+  <altitude>0.0</altitude>
+  <LatLonBox>
+    <north>42.495206324472356</north>
+    <south>42.315392664961635</south>
+    <east>-72.34986905253349</east>
+    <west>-72.59338916175635</west>
+    <rotation>0.0</rotation>
+  </LatLonBox>
+  <TimeSpan>
+    <begin>2025-03-27T21:39:59-04:00</begin>
+    <end>2025-03-27T22:39:59-04:00</end>
+  </TimeSpan>
+</GroundOverlay>
+
+</Folder>
+<Folder>
+<name>Distribution with searches</name>
+<GroundOverlay>
+  <visibility>0</visibility>
+  <drawOrder>0</drawOrder>
+  <name>2025-03-27T21:39:59-04:00</name>
+  <Icon>
+    <href>SearchScenario/AllData.png</href>
+  </Icon>
+  <altitude>0.0</altitude>
+  <LatLonBox>
+    <north>42.495206324472356</north>
+    <south>42.315392664961635</south>
+    <east>-72.34986905253349</east>
+    <west>-72.59338916175635</west>
+    <rotation>0.0</rotation>
+  </LatLonBox>
+  <TimeSpan>
+    <begin>2025-03-27T21:39:59-04:00</begin>
+    <end>2025-03-27T22:39:59-04:00</end>
+  </TimeSpan>
+</GroundOverlay>
+
+</Folder>
+</Document>
+</kml>

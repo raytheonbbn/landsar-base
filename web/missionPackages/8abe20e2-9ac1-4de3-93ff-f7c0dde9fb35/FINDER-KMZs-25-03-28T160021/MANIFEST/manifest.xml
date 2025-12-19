@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<MissionPackageManifest version="2">
+  <Contents>
+    <Content ignore="false" zipEntry="SearchScenario/distribution0-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution1-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution2-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35.kmz"/>
+    <Content ignore="false" zipEntry="Landcover-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35/Landcover-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35.kmz"/>
+    <Content ignore="false" zipEntry="LKP-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35/LKP-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35.kmz"/>
+    <Content ignore="false" zipEntry="Elevation-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35/Elevation-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35.kmz"/>
+    <Content ignore="false" zipEntry="BoundingBox-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35/BoundingBox-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35.kml"/>
+    <Content ignore="false" zipEntry="Paths-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35/Paths-8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35.kml"/>
+    <Content ignore="false" zipEntry="timeKmzMapping/timeKmzMapping.json"/>
+    <Content ignore="false" zipEntry="lostPersonInstances/lostPersonInstances.json"/>
+    <Content ignore="false" zipEntry="searches/searches.json"/>
+  </Contents>
+  <Configuration>
+    <Parameter name="uid" value="8abe20e2-9ac1-4de3-93ff-f7c0dde9fb35"/>
+    <Parameter name="name" value="FINDER-KMZs-25-03-28T160021"/>
+    <Parameter name="lpiName" value="Test Admin 2"/>
+    <Parameter name="callsign" value="FINDER"/>
+    <Parameter name="requestId" value="9194cfad-2d87-4019-aa55-ec3bed63c02c"/>
+    <Parameter name="onReceiveImport" value="true"/>
+    <Parameter name="onReceiveAction" value="NEW_OSPPRE_MISSION_PACKAGE_INTENT"/>
+  </Configuration>
+</MissionPackageManifest>

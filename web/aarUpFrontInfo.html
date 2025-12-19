@@ -1,0 +1,232 @@
+<span><b>Instructions:</b></span>
+<p><i>This form focuses on general information about the lost person.
+    The search team may know some of this in advance of the SAR operation.
+	The information you enter, along with relevant details of the
+	search actions taken within the tool, will help us to improve LandSAR's
+	predictive algorithms. You should not include any personally identifiable
+	information (PII) in your responses.
+</i></p>
+
+<!-- LP Height	(Category: under 4’, 4’ to 5’, 5’ to 6’, over 6’) -->
+<div class='headerText'>Lost person height</div><br>
+<i>Please select the lost person's height (<span class="metersOrFeetUnits">feet</span>).</i><br>
+<div id="errorHeight" style="display: none;">
+    <p style="color: red;">Missing height field</p>
+</div>
+<input type="radio" id="under_four" name="lp_height" value="UNDER_FOUR">
+<label for="under_four">Under 4</label><br>
+<input type="radio" id="four_to_five" name="lp_height" value="FOUR_TO_FIVE">
+<label for="four_to_five">4 to 5</label><br>
+<input type="radio" id="five_to_six" name="lp_height" value="FIVE_TO_SIX">
+<label for="five_to_six">5 to 6</label><br>
+<input type="radio" id="over_six" name="lp_height" value="OVER_SIX">
+<label for="over_six">over 6</label><br>
+
+<!-- LP Gender (Category: Male, Female, Other ) -->
+<div class='headerText'>Gender</div><br>
+<i>Please indicate the lost person's gender.</i><br>
+<div id="errorGender" style="display: none;">
+    <p style="color: red;">Missing gender field</p>
+</div>
+<input type="radio" id="gender_male" name="gender" value="MALE">
+<label for="gender_male">Male</label><br>
+<input type="radio" id="gender_female" name="gender" value="FEMALE">
+<label for="gender_female">Female</label><br>
+<input type="radio" id="gender_other" name="gender" value="OTHER">
+<label for="gender_other">Other</label><br>
+
+<!-- Useful items in Load (what LP was carrying with them).
+Select all applicable: compass, food, map, cell phone, flashlight, cold gear,
+camping/hiking gear, other -->
+<div class='headerText'>Useful Items in Load</div><br>
+<i>Please select all items that the lost person could be carrying.</i>
+<table>
+    <tr>
+        <td>
+            <input type="checkbox" id="load_compass" name="load_info" value="COMPASS">
+			<label for="load_compass">Compass</label><br>
+        </td>
+        <td>
+            <input type="checkbox" id="load_food" name="load_info" value="FOOD">
+            <label for="load_food">Food</label><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" id="load_map" name="load_info" value="MAP">
+			<label for="load_map">Map</label><br>
+        </td>
+        <td>
+            <input type="checkbox" id="load_cell_phone" name="load_info" value="CELL_PHONE">
+			<label for="load_cell_phone">Cell Phone</label><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" id="load_flashlight" name="load_info" value="FLASHLIGHT">
+			<label for="load_flashlight">Flashlight</label><br>
+        </td>
+        <td>
+            <input type="checkbox" id="load_cold_gear" name="load_info" value="COLD_GEAR">
+			<label for="load_cold_gear">Cold Gear</label><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" id="load_camping" name="load_info" value="CAMPING_HIKING_GEAR">
+			<label for="load_camping">Camping/Hiking Gear</label><br>
+        </td>
+        <td>
+            <input type="checkbox" id="load_flares" name="load_info" value="FLARES">
+			<label for="load_flares">Visual Distress Signal/Flares</label><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" id="load_whistle" name="load_info" value="WHISTLE">
+            <label for="load_whistle">Auditory Distress Signal/Whistle</label><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="load_other">Other</label><br>
+            <textarea id="load_other" name="load_info" rows="2" cols="50"></textarea><br>
+        </td>
+    </tr>
+</table>
+
+
+<!-- Subject Category (Category with subcategory:
+Outdoorsman: Hiker, Hunter, Mushroom Picker
+Athlete: Mountain Biker, Alpine Skier, Nordic Skier, Snowboarder, Horse Back Rider
+Altered Mental State: Alzheimer’s, Dementia, Intellectual Disability, Psychotic, Despondent, Autism, Intoxication, Leaving Car accident due to head injury
+Child,
+Fleeing (including criminal activity),
+Other -->
+<div class='headerText'>Subject Category</div><br>
+<i>Which of the following best describes the lost person?</i><br>
+<div id="errorSubjectCategory" style="display: none;">
+    <p style="color: red;">Missing subject category field</p>
+</div>
+<input type="radio" id="category_outdoorsman" name="subject_category" value="OUTDOORSMAN" onchange="onIPCategoryChanged(this.id, this.checked)">
+<label for="category_outdoorsman">Outdoorsman</label><br>
+<input type="radio" id="category_athlete" name="subject_category" value="ATHLETE" onchange="onIPCategoryChanged(this.id, this.checked)">
+<label for="category_athlete">Athlete</label><br>
+<input type="radio" id="category_altered_mental_state" name="subject_category" value="ALTERED_MENTAL_STATE" onchange="onIPCategoryChanged(this.id, this.checked)">
+<label for="category_altered_mental_state">Altered Mental State</label><br>
+<input type="radio" id="category_child" name="subject_category" value="CHILD" onchange="onIPCategoryChanged(this.id, this.checked)">
+<label for="category_child">Child</label><br>
+<input type="radio" id="category_fleeing" name="subject_category" value=FLEEING onchange="onIPCategoryChanged(this.id, this.checked)">
+<label for="category_fleeing">Fleeing (including criminal activity)</label><br>
+<input type="radio" id="category_other" name="subject_category" value="OTHER" onchange="onIPCategoryChanged(this.id, this.checked)">
+<label for="category_other">Other</label><br>
+
+<div id="subcategory_outdoorsman" style="display: none;">
+	<br>
+    <i>Please select one of the following subcategories:</i><br>
+    <div id="errorOutdoorsman" style="display: none;">
+        <p style="color: red;">Please select a subcategory</p>
+    </div>
+    <input type="radio" id="subcategory_hiker" name="subcategory_outdoorsman" value="HIKER">
+    <label for="subcategory_hiker">Hiker</label><br>
+    <input type="radio" id="subcategory_hunter" name="subcategory_outdoorsman" value="HUNTER">
+    <label for="subcategory_hunter">Hunter</label><br>
+    <input type="radio" id="subcategory_mushroom_picker" name="subcategory_outdoorsman" value="MUSHROOM_PICKER">
+    <label for="subcategory_mushroom_picker">Mushroom Picker</label><br>
+</div>
+
+<div id="subcategory_athlete" style="display: none;">
+    <br>
+    <i>Please select one of the following subcategories:</i><br>
+    <div id="errorAthlete" style="display: none;">
+        <p style="color: red;">Please select a subcategory</p>
+    </div>
+    <input type="radio" id="subcategory_mountain_biker" name="subcategory_athlete" value="MOUNTAIN_BIKER">
+    <label for="subcategory_mountain_biker">Mountain Biker</label><br>
+    <input type="radio" id="subcategory_alpine_skier" name="subcategory_athlete" value="ALPINE_SKIER">
+    <label for="subcategory_alpine_skier">Alpine Skier</label><br>
+    <input type="radio" id="subcategory_nordic_skier" name="subcategory_athlete" value="NORDIC_SKIER">
+    <label for="subcategory_nordic_skier">Nordic Skier</label><br>
+    <input type="radio" id="subcategory_snowboarder" name="subcategory_athlete" value="SNOWBOARDER">
+    <label for="subcategory_snowboarder">Snowboarder</label><br>
+    <input type="radio" id="subcategory_horseback_rider" name="subcategory_athlete" value="HORSEBACK_RIDER">
+    <label for="subcategory_horseback_rider">Horseback Rider</label><br>
+</div>
+
+<div id="subcategory_altered_mental_state" style="display: none;">
+    <br>
+    <i>Please select one of the following subcategories:</i><br>
+    <div id="errorMentalState" style="display: none;">
+        <p style="color: red;">Please select a subcategory</p>
+    </div>
+    <input type="radio" id="subcategory_alzheimers" name="subcategory_altered_mental_state" value="ALZHEIMERS">
+    <label for="subcategory_alzheimers">Alzheimer's</label><br>
+
+    <input type="radio" id="subcategory_dementia" name="subcategory_altered_mental_state" value="DEMENTIA">
+    <label for="subcategory_dementia">Dementia</label><br>
+    <input type="radio" id="subcategory_intellectual_disability" name="subcategory_altered_mental_state" value="INTELLECTUAL_DISABILITY">
+    <label for="subcategory_intellectual_disability">Intellectual Disability</label><br>
+    <input type="radio" id="subcategory_psychotic" name="subcategory_altered_mental_state" value="PSYCHOTIC">
+    <label for="subcategory_psychotic">Psychotic</label><br>
+    <input type="radio" id="subcategory_despondent" name="subcategory_altered_mental_state" value="DESPONDENT">
+    <label for="subcategory_despondent">Despondent</label><br>
+    <input type="radio" id="subcategory_autism" name="subcategory_altered_mental_state" value="AUTISM">
+    <label for="subcategory_autism">Autism</label><br>
+    <input type="radio" id="subcategory_intoxication" name="subcategory_altered_mental_state" value="INTOXICATION">
+    <label for="subcategory_intoxication">Intoxication</label><br>
+    <input type="radio" id="subcategory_head_injury" name="subcategory_altered_mental_state" value="HEAD_INJURY">
+    <label for="subcategory_head_injury">Leaving car accident due to head injury</label><br>
+</div>
+
+
+<!-- Age (Category: under 4, 4-6, 7-9, 10-12, 13-15, 16-18, 19-21, 22-25,
+26-29, 30-34, 35-39, 40-44, 45-49, 50-54, 55-59, 60-64, 65-69,
+70-74, 75-79, 80+) -->
+<div class='headerText'>Age</div><br>
+<i>Please select one of the following age categories:</i><br>
+<div id="errorAge" style="display: none;">
+    <p style="color: red;">Missing age field</p>
+</div>
+<input type="radio" id="age_1" name="lp_age" value="UNDER_FOUR">
+<label for="age_1">Under 4</label><br>
+<input type="radio" id="age_2" name="lp_age" value="FOUR_TO_SIX">
+<label for="age_2">4-6</label><br>
+<input type="radio" id="age_3" name="lp_age" value="SEVEN_TO_NINE">
+<label for="age_3">7-9</label><br>
+<input type="radio" id="age_4" name="lp_age" value="TEN_TO_TWELVE">
+<label for="age_4">10-12</label><br>
+<input type="radio" id="age_5" name="lp_age" value="THIRTEEN_TO_FIFTEEN">
+<label for="age_5">13-15</label><br>
+
+<input type="radio" id="age_6" name="lp_age" value="SIXTEEN_TO_EIGHTEEN">
+<label for="age_6">16-18</label><br>
+<input type="radio" id="age_7" name="lp_age" value="NINETEEN_TO_TWENTYONE">
+<label for="age_7">19-21</label><br>
+<input type="radio" id="age_8" name="lp_age" value="TWENTYTWO_TO_TWENTYFIVE">
+<label for="age_8">22-25</label><br>
+<input type="radio" id="age_9" name="lp_age" value="TWENTYSIX_TO_TWENTYNINE">
+<label for="age_9">26-29</label><br>
+<input type="radio" id="age_10" name="lp_age" value="THIRTY_TO_THIRTYFOUR">
+<label for="age_10">30-34</label><br>
+
+<input type="radio" id="age_11" name="lp_age" value="THIRTYFIVE_TO_THIRTYNINE">
+<label for="age_11">35-39</label><br>
+<input type="radio" id="age_12" name="lp_age" value="FORTY_TO_FORTYFOUR">
+<label for="age_12">40-44</label><br>
+<input type="radio" id="age_13" name="lp_age" value="FORTYFIVE_TO_FORTYNINE">
+<label for="age_13">45-49</label><br>
+<input type="radio" id="age_14" name="lp_age" value="FIFTY_TO_FIFTYFOUR">
+<label for="age_14">50-54</label><br>
+<input type="radio" id="age_15" name="lp_age" value="FIFTYFIVE_TO_FIFTYNINE">
+<label for="age_15">55-59</label><br>
+
+<input type="radio" id="age_16" name="lp_age" value="SIXTY_TO_SIXTYFOUR">
+<label for="age_16">60-64</label><br>
+<input type="radio" id="age_17" name="lp_age" value="SIXTYFIVE_TO_SIXTYNINE">
+<label for="age_17">65-69</label><br>
+<input type="radio" id="age_18" name="lp_age" value="SEVENTY_TO_SEVENTYFOUR">
+<label for="age_18">70-74</label><br>
+<input type="radio" id="age_19" name="lp_age" value="SEVENTYFIVE_TO_SEVENTYNINE">
+<label for="age_19">75-79</label><br>
+<input type="radio" id="age_20" name="lp_age" value="EIGHTY_PLUS">
+<label for="age_20">80+</label><br>

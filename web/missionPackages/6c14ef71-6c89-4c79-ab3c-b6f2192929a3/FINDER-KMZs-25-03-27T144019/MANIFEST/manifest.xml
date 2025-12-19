@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<MissionPackageManifest version="2">
+  <Contents>
+    <Content ignore="false" zipEntry="SearchScenario/distribution0-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution1-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution2-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution3-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution4-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution5-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution6-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution7-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution8-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution9-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="Landcover-6c14ef71-6c89-4c79-ab3c-b6f2192929a3/Landcover-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="LKP-6c14ef71-6c89-4c79-ab3c-b6f2192929a3/LKP-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="Elevation-6c14ef71-6c89-4c79-ab3c-b6f2192929a3/Elevation-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kmz"/>
+    <Content ignore="false" zipEntry="BoundingBox-6c14ef71-6c89-4c79-ab3c-b6f2192929a3/BoundingBox-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kml"/>
+    <Content ignore="false" zipEntry="Paths-6c14ef71-6c89-4c79-ab3c-b6f2192929a3/Paths-6c14ef71-6c89-4c79-ab3c-b6f2192929a3.kml"/>
+    <Content ignore="false" zipEntry="timeKmzMapping/timeKmzMapping.json"/>
+    <Content ignore="false" zipEntry="lostPersonInstances/lostPersonInstances.json"/>
+    <Content ignore="false" zipEntry="searches/searches.json"/>
+  </Contents>
+  <Configuration>
+    <Parameter name="uid" value="6c14ef71-6c89-4c79-ab3c-b6f2192929a3"/>
+    <Parameter name="name" value="FINDER-KMZs-25-03-27T144019"/>
+    <Parameter name="lpiName" value="Test Admin 1"/>
+    <Parameter name="callsign" value="FINDER"/>
+    <Parameter name="requestId" value="3780175b-ecfb-4ee2-9724-e99898d193fb"/>
+    <Parameter name="onReceiveImport" value="true"/>
+    <Parameter name="onReceiveAction" value="NEW_OSPPRE_MISSION_PACKAGE_INTENT"/>
+  </Configuration>
+</MissionPackageManifest>

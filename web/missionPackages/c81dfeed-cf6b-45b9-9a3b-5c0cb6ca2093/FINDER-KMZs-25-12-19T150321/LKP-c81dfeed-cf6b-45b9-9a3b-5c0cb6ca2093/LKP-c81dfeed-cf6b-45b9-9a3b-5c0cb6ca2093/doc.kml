@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Placemark>
+<visibility>0</visibility>
+<Style><PolyStyle><fill>0</fill><outline>3</outline></PolyStyle><LineStyle><color>ffffff00</color><width>2</width></LineStyle><LabelStyle><scale>0</scale></LabelStyle></Style>
+<Point><coordinates>-72.46070548097848,42.40209671443316,0 </coordinates></Point>
+
+</Placemark>
+
+</Document>
+</kml>

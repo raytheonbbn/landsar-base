@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<GroundOverlay>
+  <visibility>0</visibility>
+  <drawOrder>0</drawOrder>
+  <name>Elevation.png</name>
+  <Icon>
+    <href>Elevation.png</href>
+  </Icon>
+  <altitude>0.0</altitude>
+  <LatLonBox>
+    <north>42.459807828861216</north>
+    <south>42.27999416935049</south>
+    <east>-72.3562056133084</east>
+    <west>-72.59958844009373</west>
+    <rotation>0.0</rotation>
+  </LatLonBox>
+</GroundOverlay>
+
+</Document>
+</kml>

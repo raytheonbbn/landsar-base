@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Placemark>
+<drawOrder>1</drawOrder>
+<visibility>0</visibility>
+<Style><PolyStyle><fill>0</fill><outline>1</outline></PolyStyle><LineStyle><color>ff000000</color><width>3</width></LineStyle></Style>
+<Polygon>
+  <extrude>0</extrude>
+  <altitudeMode>clampToGround</altitudeMode>
+  <outerBoundaryIs><LinearRing><coordinates>
+-72.5875088035224,42.44623848042148
+-72.34417853573356,42.44623848042148
+-72.34417853573356,42.26642482091075
+-72.5875088035224,42.26642482091075
+-72.5875088035224,42.44623848042148
+  </coordinates></LinearRing></outerBoundaryIs>
+</Polygon>
+
+
+</Placemark>
+
+</Document>
+</kml>

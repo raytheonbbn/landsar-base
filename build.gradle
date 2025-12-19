@@ -1,0 +1,29 @@
+plugins {
+    id "com.github.spotbugs" version "5.0.4"
+}
+
+group 'com.bbn.roger'
+version restore_version
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+//sourceCompatibility = 11
+
+
+repositories {
+    maven { url 'https://repo.osgeo.org/repository/release/' }
+    maven { url 'https://repo.osgeo.org/repository/snapshot/' }
+    mavenCentral()
+    //mavenLocal()
+    maven {
+        url "https://maven.geo-solutions.it"
+    }
+    maven {
+    	url 'provided_lib'
+    }
+    //flatDir {
+    //    dirs 'provided_lib'
+    //}
+}

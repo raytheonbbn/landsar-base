@@ -1,0 +1,121 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.bbn.landsar",
+    "module": "motion-model-sdk",
+    "version": "0.0.6-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.4",
+      "buildId": "vuvncivzs5ddrjx73vlnvs46ay"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.bbn.roger",
+          "module": "roger-plugin-interfaces",
+          "version": {
+            "requires": "1.3.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.8.0"
+          }
+        },
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-api",
+          "version": {
+            "requires": "1.7.13"
+          }
+        },
+        {
+          "group": "com.metsci.glimpse",
+          "module": "glimpse-util",
+          "version": {
+            "requires": "3.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "motion-model-sdk-0.0.6-SNAPSHOT.jar",
+          "url": "motion-model-sdk-0.0.6-SNAPSHOT.jar",
+          "size": 169789,
+          "sha512": "255e6aefed9e018b01736d1fe2190a007fb02a946acaf713bc5028731615d22c901ad4786c1f381bb476ea091522d6683753405a2eea1a68bbc56b6498863434",
+          "sha256": "51e36a67b21dad58cdbea1ed7871f67030f4d995a2b4ced745958207bba817d3",
+          "sha1": "7bba5f69b13a670cce2a0c18ba626ec16c7e9052",
+          "md5": "d214e44fdff238b7682c68d5e3891cb0"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.bbn.roger",
+          "module": "roger-plugin-interfaces",
+          "version": {
+            "requires": "1.3.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.8.0"
+          }
+        },
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-api",
+          "version": {
+            "requires": "1.7.13"
+          }
+        },
+        {
+          "group": "com.metsci.glimpse",
+          "module": "glimpse-util",
+          "version": {
+            "requires": "3.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "motion-model-sdk-0.0.6-SNAPSHOT.jar",
+          "url": "motion-model-sdk-0.0.6-SNAPSHOT.jar",
+          "size": 169789,
+          "sha512": "255e6aefed9e018b01736d1fe2190a007fb02a946acaf713bc5028731615d22c901ad4786c1f381bb476ea091522d6683753405a2eea1a68bbc56b6498863434",
+          "sha256": "51e36a67b21dad58cdbea1ed7871f67030f4d995a2b4ced745958207bba817d3",
+          "sha1": "7bba5f69b13a670cce2a0c18ba626ec16c7e9052",
+          "md5": "d214e44fdff238b7682c68d5e3891cb0"
+        }
+      ]
+    }
+  ]
+}

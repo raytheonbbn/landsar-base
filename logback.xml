@@ -1,0 +1,34 @@
+<configuration scan="true">
+  <!-- Use the following to print the logger status: StatusPrinter.print((LoggerContext)LoggerFactory.getILoggerFactory()); -->
+  <property name="ROGER_HOME" value="."/>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="FILE-AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${ROGER_HOME}/logs/landsar.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${ROGER_HOME}/logs/landsar.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+      <maxHistory>90</maxHistory> 
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- <logger name="org.eclipse.jetty" level="error" /> -->
+  <logger name="com.bbn.roger.plugin.core.io.server.JettyServerPlugin" level="debug" />
+  <logger name="org.eclipse.jetty" level="error" />
+  <logger name="com.bbn.roger.plugin.core.io.client.TcpNettyClientPlugin" level="debug"/>
+  <logger name="com.bbn.roger.plugin.core.io.client.HttpNettyClientPlugin" level="debug"/>
+  <logger name="com.bbn.roger.reporting" level="debug"/>
+  <logger name="com.bbn.roger.osppre.plugin" level="info"/>
+  <logger name="com.bbn.roger.osppre.core_interface.OsppreConfiguration" level="debug"/>
+<root level="INFO">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE-AUDIT"/>
+  </root>
+</configuration>

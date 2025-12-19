@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifp
+	xmlns="http://www.bbn.com/roger/ifp"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.bbn.com/roger/ifp ifp.xsd">
+	
+	<node id="sendNode" nodeType="single_branch">
+		<action>
+			<request>
+				<task taskType="goal" value="SEND"/>
+			</request>
+		</action>
+	</node>
+	
+
+	<startNode nodeType="single_branch">
+		<action value="RestoreWebServerPlugin-1"><!--  -->
+			<nextNode nodeType="single_branch">
+				<action>
+					<request>
+						<task taskType="plugin name" value="ByteArrayToStringPayload"/>
+					</request>
+					<nextNode nodeType="single_branch" delayExpressionEvaluation="true">
+						<action>
+							<request operation="or">
+								<task taskType="plugin name" value="MotionModelCoordinatorPlugin"/>
+								<task taskType="plugin name" value="SearchCreatorPlugin"/>
+								<task taskType="plugin name" value="LPIDeleterPlugin"/>
+								<task taskType="plugin name" value="ViewLPIsPlugin"/>
+								<task taskType="plugin name" value="SearchRemoverPlugin"/>
+                                                                <task taskType="plugin name" value="OsppreConfigSender"/>
+							</request><request>
+								<task taskType="plugin name" value="KMLPlugin"/>
+							</request>
+
+							<nextNode nodeType="single_branch" id="combine_mission_package" delayExpressionEvaluation="true">
+								<action>
+									<request>	
+										<task taskType="plugin name" value="queueAggregateMP"/>
+									</request>
+						
+									<nextNode nodeType="single_branch" delayExpressionEvaluation="true">
+										<action>
+											<request>
+												<task taskType="plugin name" value="UnzipToDisk"/>
+												<task taskType="plugin name" value="UnzipCompletionNotifierPlugin"/>
+											</request>
+										</action>
+									</nextNode>
+								</action>
+							</nextNode>
+						</action>
+					</nextNode>
+				</action>
+			</nextNode>
+		</action>
+		
+	</startNode>
+</ifp>

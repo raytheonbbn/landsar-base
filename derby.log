@@ -1,0 +1,15 @@
+Fri Dec 19 15:06:41 EST 2025 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1621
+Fri Dec 19 15:07:36 EST 2025 : Apache Derby Network Server - 10.14.2.0 - (1828579) shutdown
+5:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-019b-3838-bdcc-00003b00f540 
+on database directory /home/brandon/RESTORE/github/landsar-base/landsar with class loader com.bbn.roger.plugin.RogerUrlClassLoader@cd1e646 
+Loaded from file:dependencies/derby-10.14.2.0.jar
+java.vendor=Eclipse Adoptium
+java.runtime.version=11.0.29+7
+user.dir=/home/brandon/RESTORE/github/landsar-base
+os.name=Linux
+os.arch=amd64
+os.version=6.17.11-200.fc42.x86_64
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+Fri Dec 19 15:07:36 EST 2025 : Apache Derby Network Server - 10.14.2.0 - (1828579) shutdown

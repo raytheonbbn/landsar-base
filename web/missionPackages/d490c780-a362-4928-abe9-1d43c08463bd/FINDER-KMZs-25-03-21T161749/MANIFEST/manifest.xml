@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<MissionPackageManifest version="2">
+  <Contents>
+    <Content ignore="false" zipEntry="SearchScenario/distribution0-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution1-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution2-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution3-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution4-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution5-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution6-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution7-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution8-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="Landcover-d490c780-a362-4928-abe9-1d43c08463bd/Landcover-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="LKP-d490c780-a362-4928-abe9-1d43c08463bd/LKP-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="Elevation-d490c780-a362-4928-abe9-1d43c08463bd/Elevation-d490c780-a362-4928-abe9-1d43c08463bd.kmz"/>
+    <Content ignore="false" zipEntry="BoundingBox-d490c780-a362-4928-abe9-1d43c08463bd/BoundingBox-d490c780-a362-4928-abe9-1d43c08463bd.kml"/>
+    <Content ignore="false" zipEntry="Paths-d490c780-a362-4928-abe9-1d43c08463bd/Paths-d490c780-a362-4928-abe9-1d43c08463bd.kml"/>
+    <Content ignore="false" zipEntry="timeKmzMapping/timeKmzMapping.json"/>
+    <Content ignore="false" zipEntry="lostPersonInstances/lostPersonInstances.json"/>
+    <Content ignore="false" zipEntry="searches/searches.json"/>
+  </Contents>
+  <Configuration>
+    <Parameter name="uid" value="d490c780-a362-4928-abe9-1d43c08463bd"/>
+    <Parameter name="name" value="FINDER-KMZs-25-03-21T161749"/>
+    <Parameter name="lpiName" value="Test Admin"/>
+    <Parameter name="callsign" value="FINDER"/>
+    <Parameter name="requestId" value="1ccf5468-d5db-491b-a79c-f30b1d560831"/>
+    <Parameter name="onReceiveImport" value="true"/>
+    <Parameter name="onReceiveAction" value="NEW_OSPPRE_MISSION_PACKAGE_INTENT"/>
+  </Configuration>
+</MissionPackageManifest>

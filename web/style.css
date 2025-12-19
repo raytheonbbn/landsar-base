@@ -1,0 +1,525 @@
+/*
+*
+* Styling. Not much going on here.
+*
+*/
+
+html, body{
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-bar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.icon-bar a {
+  float: left;
+  width: 15%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 24px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+#mapid{
+  position: relative;
+  height: 100%;
+  min-height: 180px;
+  width: 100%;
+}
+
+input:required{
+    box-shadow: none !important;
+}
+
+invalid{
+    box-shadow: none;
+}
+
+#helperTextContainer{
+    width: 100vw;
+    text-align: center;
+}
+
+#helperText {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px;
+    color: red !important;
+    background-color: white;
+    opacity: 0.9 !important;
+    margin: auto;
+    display:inline-block;
+    text-align: center;
+}
+
+@media screen and (max-width: 1290px) {
+    #helperText {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 5px;
+        color: red !important;
+        background-color: white;
+        opacity: 0.9 !important;
+        margin: auto;
+        display:inline-block;
+        text-align: center;
+    }
+}
+
+#confirmDraw {
+	margin-top: 35px;
+}
+#moreLppParams {
+	margin-left: 9px;
+}
+#openMainMenu {
+	margin-bottom: 20px;
+}
+a, .advanced {
+	color: #333;
+}
+h4 {
+	font-weight: bold;
+}
+input[type="text"], input[type="datetime-local"], input[type="number"]{
+	margin-top: 2px;
+	margin-bottom: 6px;
+}
+input[type="radio"] {
+	margin-top: 2px;
+}
+.headerText {
+	font-weight: bold;
+	display: inline;
+}
+input[type="radio"]:last-of-type {
+	margin-bottom: 8px;
+}
+.incompleteText {
+	font-weight: bold;
+	color: red;
+}
+#slider {
+	margin-bottom: 0px;
+}
+
+input:invalid {
+    box-shadow: none !important;
+}
+
+#searchTimeContainer{
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+}
+
+#searchTimezone{
+    margin: 2px;
+    padding-top: 3px;
+}
+
+#searchDate{
+    margin: 2px;
+}
+
+.lpiTableRow{
+
+}
+
+.lpiTableRow1{
+    font-size: 14px;
+}
+
+.lpiTableRow2{
+    font-size: 13px;
+}
+
+.lpiTableRow1 > b{
+    padding-left: 10px;
+}
+
+.lpiTableRow2 > b{
+    padding-left: 20px;
+}
+
+#lpiInfoModal{
+    font-size: 14px;
+}
+
+
+.searchTableRow1 > b{
+    padding-left: 10px;
+}
+
+.searchTableRow2 > b{
+    padding-left: 20px;
+}
+
+#operationUseText{
+    margin-top: 14px;
+    float: right;
+    height: auto !important;
+    border-radius: unset !important;
+
+    pointer-events: none;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: unset !important;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+#lpideletetable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#lpideletetable td, #lpideletetable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#lpideletetable tr:nth-child(even){background-color: #f2f2f2;}
+
+#lpideletetable tr:hover {background-color: #ddd;}
+
+#lpideletetable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #6F7BD9;
+  color: white;
+}
+
+#sign-out-button{
+    cursor: pointer;
+}
+
+#lppMenu > input{
+    width: 100%;
+}
+
+.legend{
+    display: none;
+    position: absolute;
+    z-index: 500;
+    white-space: nowrap;
+    bottom: 100px;
+    background-color: rgb(255, 255, 255);
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.65) 0px 1px 5px;
+    padding: 0px;
+    border-radius: 4px;
+    overflow: hidden;
+    font-size: 16px;
+    margin-bottom: 55px;
+}
+
+.legend-content{
+    margin-left: 12px;
+    flex: 1;
+    padding-bottom: 7px;
+    padding-right: 5px;
+}
+
+.legend-btn-minimize {
+    display: none;
+    /* height: max-content; */
+    /* width: 20px; */
+    padding: 0px;
+    width: 15px;
+    background-color: #fff;
+    flex: 1;
+}
+
+.statusBarContainer{
+    display:flex;
+    justify-content: center;
+}
+#statusBarContainer > div{
+    margin: 2px;
+    border-color: red;
+}
+
+#statusBarSummary{
+    white-space: nowrap;
+}
+
+#statusBarWarnings{
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+    color: darkviolet;
+}
+
+#statusBarClear{
+    width: 100px;
+    white-space: nowrap;
+}
+
+#statusBarClear > button{
+    padding: 0px;
+}
+
+#statusBarMoreButton{
+    margin-right: 20px;
+}
+
+#statusBarClear > button > i{
+    margin-right: 5px;
+}
+
+#disclaimerSplash{
+    color: red;
+    font-size: 14px;
+}
+
+#warningIcon{
+    display:inline-block;
+}
+
+#warningTitle{
+    display:inline-block;
+    margin-left: 10px;
+}
+
+.scroller{
+    overflow:scroll;
+    max-height:400px;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+/*#warningDialog > div > div > div.modal-footer{
+   display: none;
+} */
+.legend-title{
+    width: 100%;
+
+    margin: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    /* font-weight: 200; */
+    font-weight: bolder;
+    font-size: 17px;
+}
+
+.legend-icon{
+    margin-right: 3px;
+    text-shadow: 0 0 1px #000;
+}
+
+.legend-content > div{
+    font-size: 15px;
+}
+
+.fa-info-circle {
+    font-size: larger;
+    cursor: pointer;
+}
+
+.mvmtSchedTime {
+    margin-bottom: 2px;
+}
+
+#mapid > div.leaflet-control-container > div.leaflet-bottom.leaflet-right{
+    top: 0;
+}
+
+.backPoint{
+    font:normal normal normal 14px/1 FontAwesome;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+    font-size: 12px;
+    margin-left: 3px;
+    margin-bottom: 12px;
+}
+
+.LandSARWarning{
+    display: none;
+    color: red;
+    margin-top: 10px;
+}
+
+.lcMetaDataLabel {
+    clear: both;
+    margin-right: 5px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.landcoverMetaSubContainer{
+    align-items: center;
+    border: none;
+}
+
+.metaDataColor{
+    background-color: #486da1;
+    width: 20px;
+    height: 20px;
+    align-self: center;
+    margin-left: auto;
+}
+
+#metaLandTable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    margin: 10px;
+}
+
+#metaLandTable > td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#metaLandTable > tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.lpiInfoColor{
+    width: 20px;
+    height: 20px;
+}
+
+.landcoverCell{
+    background-color: whitesmoke;
+}
+
+.warning{
+    display: none;
+    color: red;
+    margin-top: 10px;
+}
+
+#allLostPersonsDelete{
+    margin-right: 6px;
+}
+
+.leaflet-marker-icon {
+    color: white;
+    font-size: 15px;
+    width: 70px !important;
+}
+
+.editPointInput {
+    margin-top: 1px !important;
+    margin-bottom: 1px !important;
+}
+
+.lpiPointLat{
+    width: 120px;
+}
+
+.lpiPointLon{
+    width: 120px;
+}
+
+.lpiPointZone {
+    width: 50px;
+}
+
+.lpiPointBand{
+    width: 40px;
+}
+
+.lpiPointRowLetter{
+    width: 40px;
+}
+
+.lpiPointColumnLetter{
+    width: 40px;
+}
+
+.lpiPointDegree{
+    width: 80px;
+}
+
+.lpiPointDegree2{
+    width: 80px;
+}
+
+.lpiPointMinute{
+    width: 80px;
+}
+
+.lpiPointSecond{
+    width: 80px;
+}
+
+.lpiPointMinute2{
+    width: 80px;
+}
+
+.lpiPointSecond2{
+    width: 80px;
+}
+
+.lpiPointEasting{
+    width: 80px;
+}
+
+.lpiPointNorthing{
+    width: 80px;
+}
+
+.gridZoneDesignator{
+    width: 80px;
+}
+
+.mIdentifier{
+    width: 80px;
+}
+
+.leaflet-touch-icon{
+    display: none;
+}
+
+#mainMenuContinueBtn{
+    background-color: #4CAF50;
+}
+
+.mm-attr-info{
+    margin: 0;
+    padding: 0;
+}

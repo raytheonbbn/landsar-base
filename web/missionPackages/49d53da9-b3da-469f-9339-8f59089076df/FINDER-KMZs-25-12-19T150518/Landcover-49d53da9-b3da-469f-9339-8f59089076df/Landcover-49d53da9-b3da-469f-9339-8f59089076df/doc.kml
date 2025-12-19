@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<GroundOverlay>
+  <visibility>0</visibility>
+  <drawOrder>0</drawOrder>
+  <name>Landcover.png</name>
+  <Icon>
+    <href>Landcover.png</href>
+  </Icon>
+  <altitude>0.0</altitude>
+  <LatLonBox>
+    <north>42.45801725667586</north>
+    <south>42.27820359716514</south>
+    <east>-72.35729177905216</east>
+    <west>-72.60066766822129</west>
+    <rotation>0.0</rotation>
+  </LatLonBox>
+</GroundOverlay>
+
+</Document>
+</kml>

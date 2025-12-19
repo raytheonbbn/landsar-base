@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.10.1.css">
+    <script src="../ext/geodesy/dms.js"></script>
+    <script src="../ext/geodesy/vector3d.js"></script>
+    <script src="../ext/geodesy/latlon-ellipsoidal.js"></script>
+    <script src="../ext/geodesy/latlon-ellipsoidal-datum.js"></script>
+    <script src="../ext/geodesy/utm.js"></script>
+    <script src="../ext/geodesy/mgrs.js"></script>
+    <script src='../public/util/dmsConverter.js'></script>
+    <script src="../public/util/cookie.js"></script>
+    <script src="https://code.jquery.com/qunit/qunit-2.10.1.js"></script>
+    <script src="../public/util/utils.js"></script>
+    <script src="../public/util/imperialMetricUtil.js"></script>
+    <script src="CoordinateConversions.js"></script>
+    <script src="AutoLoginUnitTests.js"></script>
+    <script src="ImperialMetricUnitTests.js"></script>
+    <script src="../public/account/login.js"></script>
+    <script>
+        QUnit.test( "equal test", function( assert ) {
+            let condition = testLoginSuccessfully()
+            assert.deepEqual(condition, true);
+
+            let condition2 = testLoginUnsuccessfully()
+            assert.deepEqual(condition2, false);
+        });
+        QUnit.test( "equal test", function( assert ) {
+            let latLon = [70, 70]
+            assert.deepEqual(testDMSConversion(latLon[0], latLon[1]), testDDMConversion(latLon[0], latLon[1]),
+                testUTMConversion(latLon[0], latLon[1]), testUSNG_MGRSConversion(latLon[0], latLon[1]));
+        });
+    </script>
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<div id="username">
+</div>
+</body>
+</html>

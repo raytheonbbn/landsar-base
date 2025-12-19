@@ -1,0 +1,320 @@
+<span><b>Instructions:</b></span>
+<p><i>This form focuses on information collected by the search team at the conclusion of a search effort.
+	Where possible, the AAR measurements are compliant with the International Search & Rescue Incident Database (ISRID) data collection guidelines.
+	The information you enter, along with relevant details of the
+	search actions taken using LandSAR, will help us to improve LandSAR's
+	predictive algorithms. You should not include any personally identifiable
+	information (PII) in your responses.
+</i></p>
+
+<div class='headerText'>Was the subject found?</div><br>
+<div id="errorSubjectFound" style="display: none;">
+    <p style="color: red;">Please indicate if the subject was found.</p>
+</div>
+<input type="radio" id="subject_found_yes" name="subject_found" value="true">
+<label for="subject_found_yes">Yes</label><br>
+<input type="radio" id="subject_found_no" name="subject_found" value="false">
+<label for="subject_found_no">No</label><br>
+
+<div class='headerText subjectFound'>What was the subject's condition when found?</div><br>
+<div id="errorSubjectCondition" style="display: none;">
+    <p style="color: red;">Please select the subject's condition when found.</p>
+</div>
+<input type="radio" id="status_uninjured" name="subject_status" value='UNINJURED'>
+<label class='subjectFound' for="status_uninjured">Uninjured</label><br>
+<input type="radio" id="status_injured" name="subject_status" value='INJURED'>
+<label class='subjectFound' for="status_injured">Injured</label><br>
+<input type="radio" id="status_deceased" name="subject_status" value='DECEASED'>
+<label class='subjectFound' for="status_deceased">Deceased</label><br>
+
+<div class='headerText subjectFound'>Was the subject responsive?</div><br>
+<div id="errorSubjectResponsive" style="display: none;">
+    <p style="color: red;">Please indicate if the subject was responsive.</p>
+</div>
+<input type="radio" id="subject_responsive_yes" name="subject_responsive" value='RESPONSIVE'>
+<label class='subjectFound' for="subject_responsive_yes">Yes</label><br>
+<input type="radio" id="subject_responsive_no" name="subject_responsive" value='UNRESPONSIVE'>
+<label class='subjectFound' for="subject_responsive_no">No</label><br>
+
+<div class='headerText'>Total Search Time (Hours)</div><br>
+<i>Time from which search agency was contacted to time when the subject was
+	located or the search was suspended.</i><br>
+<div id="errorTotalSearchTime" style="display: none;">
+	<p style="color: red;">Please enter the total search time.</p>
+</div>
+<input type="number" min="0" step="0.25" id="total_search_time" name="total_search_time"><br>
+
+<div class='headerText subjectFound'>Total Time Lost (Hours)</div><br>
+<i class='subjectFound'>Time when the subject was last seen to time when the subject
+	was located.</i><br>
+<div id="errorTotalTimeLost" style="display: none;">
+	<p style="color: red;">Please enter the total time lost.</p>
+</div>
+<input type="number" min="0" step="0.25" id="total_time_lost" name="total_time_lost"><br>
+
+<div class='headerText subjectFound'>Distance From Point Last Seen (<span class="milesOrKMUnits">Miles</span>)</div><br>
+<i class='subjectFound' id="distance_from_point_seen_description">Distance in miles to tenth of a mile if possible.
+	Enter 0 for less than 87 yards, and 0.1 for 88-263 yards.</i><br>
+<div id="errorDistanceFromPLS" style="display: none;">
+	<p style="color: red;">Please enter a distance.</p>
+</div>
+<input type="number" min="0" step="0.1" id="total_distance_from_pls" name="distance_from_pls"><br>
+
+<div class='headerText'>Terrain Features</div><br>
+<i>Please select the terrain features that best describe the terrain
+	where the subject was found (or where the searches occurred).
+</i><br>
+<table>
+	<tr>
+		<td>
+			<input type="checkbox" id="ridge" name="terrain_features" value='RIDGE'>
+			<label for="ridge">Ridge</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="valley" name="terrain_features" value='VALLEY'>
+			<label for="valley">Valley</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" id="stream_drainage" name="terrain_features" value='STREAM_DRAINAGE'>
+			<label for="stream_drainage">Stream/Drainage</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="building" name="terrain_features" value='BUILDING'>
+			<label for="building">Building</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" id="outbuilding" name="terrain_features" value='OUT_BUILDING'>
+			<label for="outbuilding">Out-building</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="road" name="terrain_features" value='ROAD'>
+			<label for="road">Road</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" id="trail" name="terrain_features" value='TRAIL'>
+			<label for="trail">Trail</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="railroad" name="terrain_features" value='RAILROAD'>
+			<label for="railroad">Railroad</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" id="other_linear_feature" name="terrain_features" value='OTHER_LINEAR_FEATURE'>
+			<label for="other_linear_feature">Other Linear Feature</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="swamp" name="terrain_features" value='SWAMP'>
+			<label for="swamp">Swamp</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" id="yard" name="terrain_features" value='YARD'>
+			<label for="yard">Yard</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="woods" name="terrain_features" value='WOODS'>
+			<label for="woods">Woods</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" id="brush_shrubs" name="terrain_features" value='BRUSH_SHRUBS'>
+			<label for="brush_shrubs">Brush/Shrubs</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="bare_earth" name="terrain_features" value='BARE_EARTH'>
+			<label for="bare_earth">Bare Earth</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" id="grass_field" name="terrain_features" value='GRASS_FIELD'>
+			<label for="grass_field">Grass Field</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="tundra" name="terrain_features" value='TUNDRA'>
+			<label for="tundra">Tundra</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" id="field_paddock" name="terrain_features" value='FIELD_PADDOCK'>
+			<label for="field_paddock">Field/Paddock</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="open_plain" name="terrain_features" value='OPEN_PLAIN'>
+			<label for="open_plain">Open Plain</label><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="checkbox" id="desert" name="terrain_features" value='DESERT'>
+			<label for="desert">Desert</label><br>
+		</td>
+		<td>
+			<input type="checkbox" id="underwater" name="terrain_features" value='UNDER_WATER'>
+			<label for="underwater">Underwater</label><br>
+		</td>
+	</tr>
+</table>
+
+<div class='headerText subjectFound'>LP Elevation Change (<span class="metersOrFeetUnits">Feet</span>)</div><br>
+<i class='subjectFound'>If unknown, leave this field blank. If subject went downhill or otherwise
+	lost elevation, record a negative number.</i><br>
+<input type="number" id="lp_elevation_change" name="lp_elevation_change"><br>
+
+<div class='headerText subjectFound'>Track Offset (<span class="metersOrYardsUnits">Yards</span>)</div><br>
+<i class='subjectFound'>For subjects not found directly on linear features (roads, trails, etc),
+	this is the lateral distance to the closest linear feature
+	as the crow flies in yards.
+</i><br>
+<input type="number" min="0" id="track_offset_yards" name="track_offset_yards"><br>
+
+<div class='headerText'>Population Density</div><br>
+<div id="errorPopulationDensity" style="display: none;">
+	<p style="color: red;">Please select a population density.</p>
+</div>
+<input type="radio" id="urban" name="population_density" value='URBAN'>
+<label for="urban">Urban</label><br>
+<input type="radio" id="suburban" name="population_density" value='SUBURBAN'>
+<label for="suburban">Suburban</label><br>
+<input type="radio" id="rural" name="population_density" value='RURAL'>
+<label for="rural">Rural</label><br>
+<input type="radio" id="wilderness" name="population_density" value='WILDERNESS'>
+<label for="wilderness">Wilderness</label><br>
+
+<div class='headerText subjectFound'>Location Found</div><br>
+<i class='subjectFound'>Enter the latitude and longitude of the location where the subject
+	was found.</i><br>
+<div id="errorLocationFound" style="display: none;">
+	<p style="color: red;">Please enter the location found.</p>
+</div>
+<table>
+	<tr>
+		<td>
+			<label class='subjectFound' for="lat_found">Latitude:</label>
+			<!-- step=any allows infinite precision -->
+			<input type="number" step="any" id="lat_found" name="lat_found">
+		</td>
+		<td>
+			<label class='subjectFound' for="lon_found">Longitude:</label>
+			<input type="number" step="any" id="lon_found" name="lon_found">
+		</td>
+	</tr>
+</table>
+
+<!-- Precipitation (number) -->
+<div class='headerText'>Precipitation</div><br>
+<i>Indicate what kind of precipitation, if any, was present while the person
+	was lost.</i>
+<br>
+<div id="errorPrecipitation" style="display: none;">
+	<p style="color: red;">Please select a precipitation level.</p>
+</div>
+<input type='radio' id='precipitation_snow' name='precipitation_type' value='SNOW'
+	onchange="onPrecipitationSelectionChanged(this.id, this.checked)">
+<label for='precipitation_snow'>Snow</label><br>
+<input type='radio' id='precipitation_rain' name='precipitation_type' value='RAIN'
+	onchange="onPrecipitationSelectionChanged(this.id, this.checked)">
+<label for="precipitation_rain">Rain</label><br>
+<input type='radio' id='precipitation_sleet' name="precipitation_type" value='SLEET'
+	onchange="onPrecipitationSelectionChanged(this.id, this.checked)">
+<label for='precipitation_sleet'>Sleet</label><br>
+<input type='radio' id='precipitation_none' name='precipitation_type' value='NONE'
+	onchange="onPrecipitationSelectionChanged(this.id, this.checked)">
+<label for='precipitation_none'>None</label><br>
+
+<div id='precipitation_amount_div'>
+	<i>How much precipitation was there? Enter your answer in <span class="inchesOrCMUnits"><b>inches</b></span>.
+	If you don't know, leave this field blank.</i><br>
+	<input type='number' min='0' step="0.01" id='precipitation_amount' name='precipitation_amount'><br>
+</div>
+
+<!-- High/low temperature while lost (number) -->
+<div class="headerText">Temperature</div><br>
+<i>Enter the lowest and highest temperatures that occurred while the person
+	was lost <b>(in degrees <span class="celsiusOrFahrenheitUnits">Fahrenheit</span>)</b>. Leave blank if you don't know.</i><br>
+<table>
+	<tr>
+		<td>
+			<label for="temp_low">Lowest:</label>
+			<input type="number" step="0.1" id="temp_low" name="temp_low">
+		</td>
+		<td>
+			<label for="temp_high">Highest:</label>
+			<input type="number" step="0.1" id="temp_high" name="temp_high">
+		</td>
+	</tr>
+</table>
+
+<!-- Subject found by method -->
+<div class="headerText subjectFound">How was the subject found?</div><br>
+<select id="subjectFoundBySelect" name="subjectFoundBySelect"
+onchange="onSubjectFoundSelectChanged(this.value)">
+	<option name="subjectFoundBy" value="SELF_RECOVERED">Self-recovered</option>
+	<option name="subjectFoundBy" value="FAMILY_FRIENDS">Family/friends</option>
+	<option name="subjectFoundBy" value="INVESTIGATIVE">Investigative</option>
+	<option name="subjectFoundBy" value="SEARCH_EFFORT">Search effort<option>
+</select>
+<div id="searchMethodSelectDiv" style="display: none;">
+	<br><br>
+	<i>Which of the following best describes this search effort?</i><br>
+	<select id="searchMethodSelect" name="searchMethodSelect">
+		<option name="searchMethod" value="SEARCH_EFFORT_HASTY_TEAM">Hasty team</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_AIR_SCENT_DOG">Air-scent dog</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_TRACKING_TRAILING_DOG">Tracking/trailing dog</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_CADAVER">Cadaver dog</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_DOG">Disaster dog</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_ATTRACTION">Attraction</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_CLOSED_GRID">Closed grid</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_OPEN_GRID">Open grid</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_CONFINEMENT">Confinement</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_FIXED_WING">Fixed wing</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_HELICOPTER">Helicopter</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_HORSEBACK">Horseback</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_MOTORCYCLE">Motorcycle</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_MOUNTAIN_BIKE">Mountain bike</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_ATV">ATV</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_DIVER">Diver</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_BOAT">Boat</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_RAFT">Raft</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_SNOWMOBILE">Snowmobile</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_MANTRACKERS">(Man)trackers</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_VEHICLE">Vehicle</option>
+		<option name="searchMethod" value="SEARCH_EFFORT_OTHER">Other (please specify)<option>
+	</select>
+</div><br><br>
+
+<!-- For each search: -->
+<!-- Could they accurately see as far as the calculated sweep width -->
+
+<!-- For each search: -->
+<!-- How long did the suggested search take -->
+
+<!-- For each completed search: -->
+<!-- Why did you search here? -->
+
+<div class="headerText">Additional information</div><br>
+<!-- Why they selected this motion model -->
+<i>Why did you select the motion model?</i><br>
+<textarea id="motion_model" name="motion_model" rows="5" cols="50">
+</textarea><br><br>
+
+<!-- Technical problems with tool -->
+<i>Did you encounter any technical problems when using LandSAR?</i><br>
+<textarea id="technical_problems" name="technical_problems" rows="5" cols="50">
+</textarea><br><br>
+
+<!-- Additional text -->
+<i>What else would you like to tell us about your experience with LandSAR?</i><br>
+<textarea id="additional_info" name="additional_info" rows="5" cols="50">
+</textarea>

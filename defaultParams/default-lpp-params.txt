@@ -1,0 +1,4 @@
+Lost Person Weight Kg: 81.6466
+Gear Weight Kg: 13.6078
+Min Movement Speed (kph): 2.41402
+Max Movement Speed (kph): 5.6327

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<MissionPackageManifest version="2">
+  <Contents>
+    <Content ignore="false" zipEntry="SearchScenario/distribution0-49d53da9-b3da-469f-9339-8f59089076df.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution1-49d53da9-b3da-469f-9339-8f59089076df.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution2-49d53da9-b3da-469f-9339-8f59089076df.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution3-49d53da9-b3da-469f-9339-8f59089076df.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution4-49d53da9-b3da-469f-9339-8f59089076df.kmz"/>
+    <Content ignore="false" zipEntry="SearchScenario/distribution5-49d53da9-b3da-469f-9339-8f59089076df.kmz"/>
+    <Content ignore="false" zipEntry="Landcover-49d53da9-b3da-469f-9339-8f59089076df/Landcover-49d53da9-b3da-469f-9339-8f59089076df.kmz"/>
+    <Content ignore="false" zipEntry="LKP-49d53da9-b3da-469f-9339-8f59089076df/LKP-49d53da9-b3da-469f-9339-8f59089076df.kmz"/>
+    <Content ignore="false" zipEntry="Elevation-49d53da9-b3da-469f-9339-8f59089076df/Elevation-49d53da9-b3da-469f-9339-8f59089076df.kmz"/>
+    <Content ignore="false" zipEntry="BoundingBox-49d53da9-b3da-469f-9339-8f59089076df/BoundingBox-49d53da9-b3da-469f-9339-8f59089076df.kml"/>
+    <Content ignore="false" zipEntry="Paths-49d53da9-b3da-469f-9339-8f59089076df/Paths-49d53da9-b3da-469f-9339-8f59089076df.kml"/>
+    <Content ignore="false" zipEntry="timeKmzMapping/timeKmzMapping.json"/>
+    <Content ignore="false" zipEntry="lostPersonInstances/lostPersonInstances.json"/>
+    <Content ignore="false" zipEntry="searches/searches.json"/>
+  </Contents>
+  <Configuration>
+    <Parameter name="uid" value="49d53da9-b3da-469f-9339-8f59089076df"/>
+    <Parameter name="name" value="FINDER-KMZs-25-12-19T150518"/>
+    <Parameter name="lpiName" value="Test Admin 2"/>
+    <Parameter name="callsign" value="FINDER"/>
+    <Parameter name="requestId" value="78f05fa4-01f6-4a9d-ade1-fe953f112b9e"/>
+    <Parameter name="onReceiveImport" value="true"/>
+    <Parameter name="onReceiveAction" value="NEW_OSPPRE_MISSION_PACKAGE_INTENT"/>
+  </Configuration>
+</MissionPackageManifest>

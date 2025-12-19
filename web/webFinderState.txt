@@ -1,0 +1,93 @@
+THIS IS VERY OUT OF DATE - Leaving for the moment, but should delete
+
+================================
+THE CURRENT STATE OF WEB FINDER
+================================
+
+
+The intern who did the client side development of Web Finder left on Friday, August 23, 2019.
+This is his note to any individuals who inherit his work and have to update the Web Finder files.
+
+
+CURRENT PROBLEMS / NECESSARY FIXES
+===================================
+
+Web Finder was developed by this intern in two and half weeks. It is very likely there are
+plenty of things broken. Here are a couple of known issues:
+	- KMZs aren't always deleted on shutdown. If this is the case, they will still be returned
+			by the server. Sometimes these are empty. If this is the case, currently Web Finder
+			will load to check the KMZ and if it empty, stop loading, but not display anything
+			to the user about why this did not work.
+	- The Isolated Person Parameters are not being sent to the server. This is because the
+			the server wanted the highest long possible for the "maxiumum duration". In java,
+			this is possible to do. In JavaScript, a variable cannot store a number so high.
+			The fastest fix for this problem was to just not send this data.
+			
+
+MISSING WEB FINDER FEATURES
+===================================
+
+Web Finder does not include any of the below features, but would nice additions. These include:
+	- The ability to receive Web Sockets messages from the server
+	- Spinning icon when the server is processing data, but not returned anything
+	- Selecting a LPI
+	- Preventing the user from creating a search when there is no LPI selected (see above)
+	- Sending search data to server
+	- Toggling Layers
+	- Deletion of map items that does not include using a function in the code or
+			using the browser console. The functionality to do so exists, but has not been implemented.
+	- Setting an ip address and port (this might not actually be necessary)
+	- Toggling Layers
+	- Storing additional information using IndexedDB
+	- Actually populate the View LPIs table with LPIs (It is currently blank because of time constraints)
+	
+
+PLUGIN AND LIBRARIES USED
+===================================
+
+Web Finder uses a variety of plugins in order to run. Some of these plugins include:
+	- Leaflet (used for map creation and drawing of shapes not created by the user)
+	- Leaflet.Draw (used to draw shapes created by the user)
+	- Leaflet.Dialog (used to create the "menus" and forms that guide you through the
+			steps of OSPPRE. This also includes the slider.)
+	- Bootstrap (styling)
+	- Font-awesome (includes icons used by Leaflet.Dialog)
+	- JQuery
+	
+WEB FINDER FILES
+===================================
+
+The below list includes the file names of created by the intern. Their descriptions can be found
+at the top of each document. The javascript files are in the same order as in the main html file.
+	- better_web_finder.html
+	- style.css
+	- cache.js
+    - lpi_classes.js
+    - search_classes.js
+    - maps.js
+    - forms.js
+    - drawing.js
+    - new_lpi.js
+    - searches.js
+    - viewLPIs.js
+    - viewMissionPackages.js
+
+CONTACT
+===============================
+
+Inevitably, some information might be left out or you may have questions for the original developer.
+He can be reached at:
+	personal email: devon.minor.00@gmail.com
+	school email: Devon.Minor@tufts.edu
+
+
+
+
+
+
+
+
+
+
+
+
